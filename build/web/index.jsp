@@ -14,6 +14,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        test test test
+        This is the page that contains the description and testimonials.
     </body>
 </html>
