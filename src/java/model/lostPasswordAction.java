@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package action;
+package model;
 import com.opensymphony.xwork2.ActionSupport;
 /**
  *
