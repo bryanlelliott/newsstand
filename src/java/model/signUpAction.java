@@ -5,6 +5,7 @@
  */
 package model;
 import com.opensymphony.xwork2.ActionSupport;
+import java.sql.SQLException;
 /**
  *
  * @author katie
@@ -15,6 +16,10 @@ public class signUpAction extends ActionSupport {
     private boolean submitted;    
     // from bryan?
     private boolean loggedIn;
+    private String realName;
+    private String bio = "This user has not created a bio yet.";
+    private String email;
+    private String userType = "Regular";
     
     DBQueryHandler handler = new DBQueryHandler();
     
@@ -33,11 +38,13 @@ public class signUpAction extends ActionSupport {
         if (loggedIn == null || !loggedIn.booleanValue()) {   
                response.sendRedirect("/login.jsp"); }
     %> */  
-    public Boolean getLoggedIn() {
+
+    public boolean getLoggedIn() {
+
         return loggedIn;
     }
 
-    public void setLoggedIn(Boolean loggedIn) {
+    public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
     }
     
@@ -57,22 +64,37 @@ public class signUpAction extends ActionSupport {
         this.password = password;
     }
 
-    public Boolean getSubmitted() {
+    public boolean getSubmitted() {
         return submitted;
     }
 
-    public void setSubmitted(Boolean submitted) {
+    public void setSubmitted(boolean submitted) {
         this.submitted = submitted;
     }
     
     // not sure if i need this
     public void validate() {
         if (!loggedIn) {
-            String query = "INSERT INTO users VALUE " + userId + " " + password;
+
+            DBQueryHandler handler = new DBQueryHandler();
+            String query = "INSERT INTO users VALUES ("
+                    + userId + ", " + realName + ", " + bio +
+                    ", " + email + ", " + password + ", " +
+                    userType + ")";
             
+            try {
+                handler.doQuery(query);
+            }
+            catch(SQLException SQLE)
+            {
+                SQLE.printStackTrace();
+            }
+            
+            execute();
+
         }
         else if (loggedIn) {
-            // redirect to article list
+            
         }
     }
     public String execute() {

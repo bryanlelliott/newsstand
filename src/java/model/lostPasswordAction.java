@@ -5,22 +5,33 @@
  */
 package model;
 import com.opensymphony.xwork2.ActionSupport;
+import java.sql.SQLException;
 /**
  *
  * @author katie
  */
 public class lostPasswordAction extends ActionSupport {
-    private Boolean lostPassword;
+    private String userId;
 
-    
         public void validate() {
-        if (!lostPassword) {
-            // redirect to login page
-        }
-        else if (lostPassword) {
-            // redirect to lost password page where new password will be generated
-        }
+        
     }
+        public String execute() {
+            String newPassword = "X0j9eS3jlPo";
+            DBQueryHandler handler = new DBQueryHandler();
+            String query = "UPDATE users SET userPassword '" + newPassword + "'"
+                    + "WHERE userId = '" + userId + "'";
+            
+            try {
+                handler.doQuery(query);
+            }
+            catch(SQLException E)
+            {
+                E.printStackTrace();
+            }
+            
+            return SUCCESS;
+        }
    
 
     
