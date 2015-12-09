@@ -74,8 +74,7 @@ public class signUpAction extends ActionSupport {
         this.submitted = submitted;
     }
     
-    // not sure if i need this
-    public void validate() {
+    public void validateSignUp() {
         if (!loggedIn) {
             DBQueryHandler handler = new DBQueryHandler();
             String query = "";
