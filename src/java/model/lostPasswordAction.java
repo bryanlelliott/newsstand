@@ -12,13 +12,6 @@ import com.opensymphony.xwork2.ActionSupport;
 public class lostPasswordAction extends ActionSupport {
     private Boolean lostPassword;
 
-    public Boolean getLostPassword() {
-        return lostPassword;
-    }
-
-    public void setLostPassword(Boolean lostPassword) {
-        this.lostPassword = lostPassword;
-    }
     
         public void validate() {
         if (!lostPassword) {

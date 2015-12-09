@@ -12,10 +12,27 @@ import com.opensymphony.xwork2.ActionSupport;
 public class signUpAction extends ActionSupport {
     private String userId;    
     private String password; 
-    private Boolean submitted;    
+    private boolean submitted;    
     // from bryan?
-    private Boolean loggedIn;
+    private boolean loggedIn;
+    
+    DBQueryHandler handler = new DBQueryHandler();
+    
+    // database name?
 
+    /*
+    NOTES FROM CH 10: SECURITY-ENCRYPTION
+    // login handling
+    If (...login is successful...) {  
+        session.setAttribute("loggedIn", new Boolean (true));}
+    // logout handling
+    session.setAttribute("loggedIn", new Boolean (false));
+
+    <%@ page %>
+    <% Boolean loggedIn =   session.getAttribute("loggedIn"); 
+        if (loggedIn == null || !loggedIn.booleanValue()) {   
+               response.sendRedirect("/login.jsp"); }
+    %> */  
     public Boolean getLoggedIn() {
         return loggedIn;
     }
@@ -51,7 +68,8 @@ public class signUpAction extends ActionSupport {
     // not sure if i need this
     public void validate() {
         if (!loggedIn) {
-            // redirect to login page
+            String query = "INSERT INTO users VALUE " + userId + " " + password;
+            
         }
         else if (loggedIn) {
             // redirect to article list
