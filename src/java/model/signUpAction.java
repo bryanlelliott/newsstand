@@ -118,8 +118,6 @@ public class signUpAction extends ActionSupport {
                 SQLE.printStackTrace();
             }
             
-            // compare the result 
-            
             execute();
 
         }

@@ -22,14 +22,26 @@ public class lostPasswordAction extends ActionSupport {
                     + "' AND userRecoveryAnswer = '" + secretAnswer + "'";
             
           
+          /*
+            try {
+                handler.doQuery(query);
+            }
+            catch(SQLException SQLE)
+            {
+                SQLE.printStackTrace();
+            }
+            
+            // compare the result 
             // if the query returns null, then there is not a match.
-               if (query == null) {
-                // redirect to login.jsp
-                // tell the user that their secret answer wasnt correct
+               if (result == null) {
+                // redirect to login.jsp because the password didnt work.
                }
-               else if (query != null) {
-                   
+               else if (result != null) {
+                   execute();
                }
+
+              */ 
+            // compare the result 
         }
         
         public String execute() {
