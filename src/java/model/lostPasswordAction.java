@@ -12,11 +12,29 @@ import java.sql.SQLException;
  */
 public class lostPasswordAction extends ActionSupport {
     private String userId;
-
+    private int secretQuestion;
+    private String secretAnswer;
+    
         public void validate() {
+        // ask secret question
         
-    }
+        String query = "SELECT * FROM users WHERE userRecoveryQuestionID = '" + secretQuestion 
+                    + "' AND userRecoveryAnswer = '" + secretAnswer + "'";
+            
+          
+            // if the query returns null, then there is not a match.
+               if (query == null) {
+                // redirect to login.jsp
+                // tell the user that their secret answer wasnt correct
+               }
+               else if (query != null) {
+                   
+               }
+        }
+        
         public String execute() {
+            
+            
             String newPassword = "X0j9eS3jlPo";
             DBQueryHandler handler = new DBQueryHandler();
             String query = "UPDATE users SET userPassword '" + newPassword + "'"
