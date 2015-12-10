@@ -1,6 +1,6 @@
 <%-- 
-    Document   : signup
-    Created on : Dec 9, 2015, 9:26:39 PM
+    Document   : login
+    Created on : Dec 9, 2015, 9:27:08 PM
     Author     : francis
 --%>
 
@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>Signup</title>
+<title>Login</title>
 
 <!-- Bootstrap CSS -->
 <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen">
@@ -46,10 +46,10 @@
 					<div class="panel-heading">
 						<div class="row">
 							<div class="col-xs-6">
-								<a href="#" id="login-form-link">Login</a>
+								<a href="#" class="active" id="login-form-link">Login</a>
 							</div>
 							<div class="col-xs-6">
-								<a href="#" class="active" id="register-form-link">Register</a>
+								<a href="#" id="register-form-link">Register</a>
 							</div>
 						</div>
 						<hr>
@@ -57,7 +57,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form id="login-form" action="browse.jsp" method="post" role="form" style="display: none;">
+								<form id="login-form" action="browse.jsp" method="post" role="form" style="display: block;">
 									<div class="form-group">
 										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
 									</div>
@@ -85,7 +85,7 @@
 										</div>
 									</div>
 								</form>
-								<form id="register-form" action="" method="post" role="form" style="display: block;">
+								<form id="register-form" action="" method="post" role="form" style="display: none;">
 									<div class="form-group">
 										<input type="text" name="realname" id="realname" tabindex="1" class="form-control" placeholder="Your name" value="">
 									</div>

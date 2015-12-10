@@ -1,6 +1,6 @@
 <%-- 
-    Document   : profile
-    Created on : Dec 9, 2015, 9:24:42 PM
+    Document   : admin
+    Created on : Dec 9, 2015, 9:27:33 PM
     Author     : francis
 --%>
 
@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>Profile</title>
+<title>Admin</title>
 
 <!-- Bootstrap CSS -->
 <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen">
@@ -25,41 +25,8 @@
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <style>
-.user-row {
-    margin-bottom: 14px;
-}
-
-.user-row:last-child {
-    margin-bottom: 0;
-}
-
-.dropdown-user {
-    margin: 13px 0;
-    padding: 5px;
-    height: 100%;
-}
-
-.dropdown-user:hover {
-    cursor: pointer;
-}
-
-.table-user-information > tbody > tr {
-    border-top: 1px solid rgb(221, 221, 221);
-}
-
-.table-user-information > tbody > tr:first-child {
-    border-top: 0;
-}
-
-
-.table-user-information > tbody > tr > td {
-    border-top: 0;
-}
 .toppad {
     margin-top:20px;
-}
-.panel-heading {
-  text-align: center;
 }
 
 </style>
@@ -125,49 +92,144 @@
 <!-- INSERT HTML PAGE CONTENT HERE -->
 <div id="main-body" style="background-color:black">
   <div class="container">
+    <h1 class="text-center" style="color:white">ADMIN PANELS</h1>
       <div class="row">
-        <div class="col-md-6 col-md-offset-3 toppad" >
-   
-   
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title">Your Profile</h3>
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class=" col-md-12 col-lg-12 "> 
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td><strong>Name</strong></td>
-                        <td>Madison</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Username</strong></td>
-                        <td>madison2015</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Email</strong></td>
-                        <td><a href="mailto:madison@dukes.jmu.edu">madison@dukes.jmu.edu</a></td>
-                      </tr>
-                      <tr>
-                        <td><strong>Bio</strong></td>
-                        <td>I am a student at James Madison University.</td>
-                      </tr>
-                
-                    </tbody>
-                  </table>
-                  <button type="button" class="btn btn-default">Edit Info</button>
-                  <button type="button" class="btn btn-default">Change Password</button>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="col-md-7 toppad" >
+          <ul class="list-group">
+            <li class="list-group-item disabled text-center">ARTICLES</li>
+            <li class="list-group-item">
+              Article 1
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span>          
+            </li>
+            <li class="list-group-item">
+              Article 2
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Article 3
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Article 4
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Article 5
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Article 6
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Article 7
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Article 8
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Article 9
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Article 10
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-5 toppad" >
+          <ul class="list-group">
+            <li class="list-group-item disabled text-center">USERS</li>
+            <li class="list-group-item">
+              Person 1
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Person 2
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Person 3
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Person 4
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Person 5
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Person 6
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Person 7
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Person 8
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Person 9
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+            <li class="list-group-item">
+              Person 10
+              <span class="pull-right">
+                <a href="#"><i class="fa fa-trash-o" style="color:red"></i></a>
+              </span> 
+            </li>
+          </ul>
         </div>
       </div>
     </div>
 </div>
 <!-- End Main Body -->
+
 <!-- jQuery and Bootstrap links - do not delete! -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
