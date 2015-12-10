@@ -18,7 +18,7 @@ public class DBUpdate {
     
     public boolean insertUser(String userId, String password, 
         String email,String realName, String bio, int secretQuestion,
-        String secretAnswer, String userType) {
+            String secretAnswer, String userType) {
 
         // if logging in 
         /*query = "SELECT * FROM users WHERE userID = '" + userId 
@@ -81,9 +81,9 @@ public class DBUpdate {
     private boolean insertRating(boolean loggedIn, int ratingId, String userId,
         int articleId, int ratingValue, String ratingText, Date ratingDate) {
         String command = "INSERT INTO ratings VALUES ("
-                + ratingId + ", " + userId + ", " + articleId +
-                ", " + ratingValue + ", " + ratingText + ", " +
-                ratingDate + ");";
+            + ratingId + ", " + userId + ", " + articleId +
+            ", " + ratingValue + ", " + ratingText + ", " +
+            ratingDate + ");";
 
         try {
             int resultCount = dbComHand.doCommand(command);
@@ -95,11 +95,83 @@ public class DBUpdate {
         }              
     }
     
-    private boolean insertProvider(){
-        return false;
+    private boolean insertProvider(int providerId, String providerName){
+        String command = "INSERT INTO ratings VALUES ("
+            + providerId + ", " + providerName + ");";
+
+        try {
+            int resultCount = dbComHand.doCommand(command);
+            dbComHand.close();
+            return (resultCount > 0);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }      
     }
     
-    private boolean deleteAccount(){
-        return false;
+    private boolean deleteAccount(String userId){
+        String command = "DELETE FROM users WHERE userID = " + userId + ";";
+
+        try {
+            int resultCount = dbComHand.doCommand(command);
+            dbComHand.close();
+            return (resultCount > 0);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }      
     }
+    
+    private boolean deleteContent(int articleId) {
+        String command = "DELETE FROM articles WHERE articleID = " + articleId + ";";
+
+        try {
+            int resultCount = dbComHand.doCommand(command);
+            dbComHand.close();
+            return (resultCount > 0);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }     
+    }
+    
+    private boolean updateUser(String userId, String password, 
+        String email,String realName, String bio, int secretQuestion,
+            String secretAnswer){
+        
+        String command = "UPDATE TABLE users SET userPassword = "
+                + password + ", userEmail = "
+                + email + ", userRealName = "
+                + realName + ", userBio = " 
+                + bio + ", userRecoveryQuestionID" 
+                + secretQuestion + ", userRecoveryAnswer = "
+                + secretAnswer + "WHERE userID = " + userid + ";";
+
+        try {
+            int resultCount = dbComHand.doCommand(command);
+            dbComHand.close();
+            return (resultCount > 0);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }  
+    }
+    
+    private boolean updateCategory(int articleId, String category){
+        
+        int articleCategoryId = 0;
+        
+        String command = "INSERT INTO articleCategories VALUES ("
+                + articleCategoryId + ", "
+                + articleId + ", "
+                + category + ");";
+
+        try {
+            int resultCount = dbComHand.doCommand(command);
+            dbComHand.close();
+            return (resultCount > 0);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }      }
 }
