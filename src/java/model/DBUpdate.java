@@ -145,7 +145,7 @@ public class DBUpdate {
                 + realName + ", userBio = " 
                 + bio + ", userRecoveryQuestionID" 
                 + secretQuestion + ", userRecoveryAnswer = "
-                + secretAnswer + "WHERE userID = " + userid + ";";
+                + secretAnswer + "WHERE userID = " + userId + ";";
 
         try {
             int resultCount = dbComHand.doCommand(command);
