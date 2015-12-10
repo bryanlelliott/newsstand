@@ -77,24 +77,10 @@ public class signUpAction extends ActionSupport {
         this.submitted = submitted;
     }
     
-    private static String hashPassword(String password){
-        String digest;
-        try {
-            MessageDigest md = MessageDigest.getInstance("md5");
-            md.reset();
-            byte[] bytes = md.digest(password.getBytes());
-            digest = new BigInteger(1, bytes).toString(16);
-        }
-        catch( NoSuchAlgorithmException nsae) {
-            nsae.printStackTrace();
-            digest = null;
-        }
-        
-        return digest;
-    }
-    
     // not sure if i need this
     public void validate() {
+        ActionHelper helper = new ActionHelper();
+        
         if( userId == null )
         {
             addFieldError("userId", "This field cannot be blank.");
@@ -137,42 +123,12 @@ public class signUpAction extends ActionSupport {
         }
         else
         {
-            userId = userId.replaceAll("^<$", "&lt;");
-            userId = userId.replaceAll("^>$", "&gt;");
-            userId = userId.replaceAll("^\\($", "&#40");
-            userId = userId.replaceAll("^\\)$", "&#41");
-            userId = userId.replaceAll("^&$", "&#38");
-            userId = userId.replaceAll("^|$", "&#124");
-            
-            password = hashPassword(password);
-            
-            realName = realName.replaceAll("^<$", "&lt;");
-            realName = realName.replaceAll("^>$", "&gt;");
-            realName = realName.replaceAll("^\\($", "&#40");
-            realName = realName.replaceAll("^\\)$", "&#41");
-            realName = realName.replaceAll("^&$", "&#38");
-            realName = realName.replaceAll("^|$", "&#124");
-            
-            bio = bio.replaceAll("^<$", "&lt;");
-            bio = bio.replaceAll("^>$", "&gt;");
-            bio = bio.replaceAll("^\\($", "&#40");
-            bio = bio.replaceAll("^\\)$", "&#41");
-            bio = bio.replaceAll("^&$", "&#38");
-            bio = bio.replaceAll("^|$", "&#124");
-            
-            email = email.replaceAll("^<$", "&lt;");
-            email = email.replaceAll("^>$", "&gt;");
-            email = email.replaceAll("^\\($", "&#40");
-            email = email.replaceAll("^\\)$", "&#41");
-            email = email.replaceAll("^&$", "&#38");
-            email = email.replaceAll("^|$", "&#124");
-            
-            secretAnswer = secretAnswer.replaceAll("^<$", "&lt;");
-            secretAnswer = secretAnswer.replaceAll("^>$", "&gt;");
-            secretAnswer = secretAnswer.replaceAll("^\\($", "&#40");
-            secretAnswer = secretAnswer.replaceAll("^\\)$", "&#41");
-            secretAnswer = secretAnswer.replaceAll("^&$", "&#38");
-            secretAnswer = secretAnswer.replaceAll("^|$", "&#124");
+            userId = helper.injectionReplace(userId);
+            password = helper.hashPassword(password);
+            realName = helper.injectionReplace(realName);
+            bio = helper.injectionReplace(bio);
+            email = helper.injectionReplace(email);
+            secretAnswer = helper.injectionReplace(secretAnswer);
         }
     } 
    

@@ -11,5 +11,9 @@
         <action name="lostpassword" class="model.lostPasswordAction">
             <result name="success">login.jsp</result>
         </action>
+        <action name="signin" class="model.signInAction">
+            <result name="success">list.jsp</result>
+            <result name="failure">login.jsp</result>
+        </action>
     </package>
 </struts>
