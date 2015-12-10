@@ -73,6 +73,86 @@
         <li><a href="#" style="background-color:black; color:white;border-style:solid;border-color:white;border-width: 0 0 7px 0">UNCATEGORIZED</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+          <li>
+              <!-- Button trigger modal -->
+              <i class="fa fa-plus fa-2x" style="margin: .7em 0 0 .7em;color:white" data-toggle="modal" data-target="#myModalNorm"></i>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog" 
+                 aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <button type="button" class="close" 
+                               data-dismiss="modal">
+                                   <span aria-hidden="true">&times;</span>
+                                   <span class="sr-only">Close</span>
+                            </button>
+                            <h4 class="modal-title text-center" id="myModalLabel">
+                                Add Article
+                            </h4>
+                        </div>
+
+                        <!-- Modal Body -->
+                        <div class="modal-body">
+
+                            <form role="form">
+                              <div class="form-group">
+                                <label for="addArticleUrl">URL</label>
+                                  <input type="text" class="form-control"
+                                  id="addArticleUrl" placeholder="Enter the Article URL"/>
+                              </div>
+                              <div class="form-group">
+                                <label for="addArticleTitle">Title</label>
+                                  <input type="text" class="form-control"
+                                      id="addArticleTitle" placeholder="Article Title"/>
+                              </div>
+                              <div class="form-group">
+                                <label for="addArticleAuthor">Author</label>
+                                  <input type="text" class="form-control"
+                                      id="addArticleAuthor" placeholder="Author, ex. John Smith"/>
+                              </div>
+                              <div class="form-group">
+                                <label for="addArticleProvider">Provider</label>
+                                  <input type="text" class="form-control"
+                                      id="addArticleTitle" placeholder="Provider, ex. CNN"/>
+                              </div>
+                              <div class="form-group">
+                                <label for="addArticleDate">Publication Date</label>
+                                  <input type="date" class="form-control"
+                                      id="addArticleDate" placeholder="Published Date"/>
+                              </div>
+                              <div class="form-group">
+                                <label for="addArticleGenre">Article Genre</label>
+                                <select class="form-control" id="addArticleGenre" name="genre">
+                                  <option>World</option>
+                                  <option>US</option>
+                                  <option>Politics</option>
+                                  <option>Entertainment</option>
+                                  <option>Sports</option>
+                                  <option>Tech</option>
+                                  <option>Money</option>
+                                  <option>Science</option>
+                                  <option>Travel</option>
+                                  <option>Living</option>
+                                  <option>Other</option>
+                                </select>
+                              </div>
+                              <div class="text-center">
+                              <button type="submit" class="btn btn-success">Submit</button>
+                              </div>
+                            </form>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+          </li>
+          <!-- End modal code -->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color:black; color:white"><h5><span class="glyphicon glyphicon-user"></span> Madison <span class="badge">2</span><span class="caret"></span></h5></a>
           <ul class="dropdown-menu">
