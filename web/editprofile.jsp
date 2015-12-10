@@ -1,6 +1,6 @@
 <%-- 
-    Document   : profile
-    Created on : Dec 9, 2015, 9:24:42 PM
+    Document   : editprofile
+    Created on : Dec 10, 2015, 4:06:49 PM
     Author     : francis
 --%>
 
@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>Profile</title>
+<title>Edit Profile</title>
 
 <!-- Bootstrap CSS -->
 <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen">
@@ -215,28 +215,36 @@
             <div class="panel-body">
               <div class="row">
                 <div class=" col-md-12 col-lg-12 "> 
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td><strong>Name</strong></td>
-                        <td>Madison</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Username</strong></td>
-                        <td>madison2015</td>
-                      </tr>
-                      <tr>
-                        <td><strong>Email</strong></td>
-                        <td><a href="mailto:madison@dukes.jmu.edu">madison@dukes.jmu.edu</a></td>
-                      </tr>
-                      <tr>
-                        <td><strong>Bio</strong></td>
-                        <td>I am a student at James Madison University.</td>
-                      </tr>
-                
-                    </tbody>
-                  </table>
-                    <a href="editprofile.jsp" type="button" class="btn btn-default">Edit Profile</a>
+                  <form id="login-form" action="browse.jsp" method="post" role="form" style="display: block;">
+                      <div class="form-group">
+                          <label for="editName">Name</label>
+			<input type="text" name="editName" id="editName" tabindex="1" class="form-control" placeholder="Madison" value="Madison">
+                      </div>
+                      <div class="form-group">
+                          <label for="editName">Email</label>
+			<input type="email" name="editEmail" id="editEmail" tabindex="1" class="form-control" placeholder="madison@dukes.jmu.edu" value="madison@dukes.jmu.edu">
+                      </div>
+                      <div class="form-group">
+                          <label for="editBio">Bio</label>
+			<input type="text-area" name="editBio" id="editBio" tabindex="1" class="form-control" placeholder="I am a student at JMU." value="I am a student at JMU.">
+                      </div>
+                      <div class="form-group">
+                          <label for="oldPassword">Current Password</label>
+			<input type="oldPassword" name="oldPassword" id="oldPassword" tabindex="1" class="form-control" placeholder="" value="">
+                      </div>
+                      <div class="form-group">
+                          <label for="editPassword">New Password (not required)</label>
+			<input type="password" name="editPassword" id="editPassword" tabindex="1" class="form-control" placeholder="" value="">
+                      </div>
+                      <div class="form-group">
+                        <label for="editName">Confirm New Password (not required)</label>
+			<input type="password" name="confirmPassword" id="confirmPassword" tabindex="1" class="form-control" placeholder="" value="">
+                      </div>
+                      <div class="form-group">
+                      <input type="submit" class="btn btn-default"></input>
+                      </div>
+                  </form>
+                  
                 </div>
               </div>
             </div>
@@ -254,4 +262,5 @@
 
 </body>
 </html>
+
 
