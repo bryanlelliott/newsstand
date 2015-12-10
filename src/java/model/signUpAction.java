@@ -76,8 +76,9 @@ public class signUpAction extends ActionSupport {
     
     // not sure if i need this
     public void validate() {
-        
-    }
+        //
+    } 
+   
     public String execute() {
         return SUCCESS;
     }
