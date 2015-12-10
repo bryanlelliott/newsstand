@@ -8,7 +8,7 @@ DELETE FROM users WHERE userID = userId;
 -- use case 3, view content
 SELECT a.articleURL, a.articleURL, a.authorID, a.providerID, a.articleTitle, a.articleAddDate, a.ArticleCategory
 FROM articles a, userArticles ua 
-WHERE ua.userID = userId AND a.articleID = ua.articleID
+WHERE ua.userID = userId AND a.articleID = ua.articleID;
 
 -- use case 4, delete unsuitable content
 
