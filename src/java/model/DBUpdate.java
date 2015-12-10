@@ -93,5 +93,13 @@ public class DBUpdate {
             ex.printStackTrace();
             return false;
         }              
-    }   
+    }
+    
+    private boolean insertProvider(){
+        return false;
+    }
+    
+    private boolean deleteAccount(){
+        return false;
+    }
 }

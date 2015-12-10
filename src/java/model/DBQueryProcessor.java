@@ -10,7 +10,30 @@ package model;
  * @author elliotbl
  */
 public class DBQueryProcessor {
+    DBQueryHandler dbqh = new DBQueryHandler();
+
     private boolean getAuthor(String authorName){
-       // DBQueryHandler dbqh = 
+        return false;
     }
+    
+    private boolean getUsers() {
+        return false;
+
+    }
+    
+    private boolean getContent(){
+        return false;
+
+    }
+    
+    private boolean getRelevantArticles(){
+        return false;
+
+    }
+    
+    private boolean getPasswordRecovery(){
+        return false;
+
+    }
+    
 }
