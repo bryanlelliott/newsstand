@@ -76,56 +76,7 @@ public class signUpAction extends ActionSupport {
     
     // not sure if i need this
     public void validate() {
-        if (!loggedIn) {
-            DBQueryHandler handler = new DBQueryHandler();
-            String query = "";
-            
-            // if logging in 
-            /*query = "SELECT * FROM users WHERE userID = '" + userId 
-                    + "' AND password = '" + password + "'";
-            
-          
-            try {
-                handler.doQuery(query);
-            }
-            catch(SQLException SQLE)
-            {
-                SQLE.printStackTrace();
-            }
-            
-            // compare the result 
-            // if the query returns null, then there is not a match.
-               if (result == null) {
-                // redirect to login.jsp because the password didnt work.
-               }
-               else if (result != null) {
-                   execute();
-               }
-
-              */ 
-            // if creating new account
-
-            query = "INSERT INTO users VALUES ("
-                    + userId + ", " + realName + ", " + bio +
-                    ", " + email + ", " + password + ", " +
-                    userType + "," + secretQuestion + "," + secretAnswer + ")";
-            
-            try {
-                handler.doQuery(query);
-            }
-            catch(SQLException SQLE)
-            {
-                SQLE.printStackTrace();
-            }
-            
-            // compare the result 
-            
-            execute();
-
-        }
-        else if (loggedIn) {
-            execute();
-        }
+        
     }
     public String execute() {
         return SUCCESS;
