@@ -15,16 +15,16 @@ public class LostPasswordAction extends ActionSupport {
     private String userId;
     private int secretQuestion;
     private String secretAnswer;
-    
-        public void validate() {
+
+    public void validate() {
         
         ActionHelper helper = new ActionHelper();
         
         userId = helper.injectionReplace(userId);
         secretAnswer = helper.injectionReplace(secretAnswer);
         }
-        
-        public String execute() {
+
+    public String execute() {
            
             DBQueryHandler handler = new DBQueryHandler();
             String query = "SELECT * FROM users WHERE userRecoveryAnswer='" +

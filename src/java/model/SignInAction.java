@@ -19,8 +19,8 @@ public class SignInAction extends ActionSupport {
     
     // perhaps use userType     
     private String userType = "Regular";
-    
-public void validate() {
+
+    public void validate() {
     ActionHelper helper = new ActionHelper();
     DBQueryHandler handler = new DBQueryHandler();
     
@@ -49,7 +49,7 @@ public void validate() {
                    userId + "'";
        }
     }
-public String execute() {
+    public String execute() {
         
         String query = "SELECT password FROM users WHERE userId='" +
                    userId + "'";

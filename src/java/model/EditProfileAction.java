@@ -77,7 +77,7 @@ public class EditProfileAction extends ActionSupport{
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
-    
+   
     public void validate()
     {
         ActionHelper helper = new ActionHelper();
@@ -160,8 +160,8 @@ public class EditProfileAction extends ActionSupport{
         }
         else
         {
-            updater.updateUser(userId, editEmail, editName, NONE, editName)
+            updater.updateUser(userId, editEmail, editName, NONE, editName);
         }
-        return "";
+        return SUCCESS;
     }
 }

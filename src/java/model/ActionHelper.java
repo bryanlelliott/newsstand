@@ -15,6 +15,11 @@ import java.security.NoSuchAlgorithmException;
  */
 public class ActionHelper {
     
+    /**
+     *
+     * @param input
+     * @return
+     */
     public String injectionReplace(String input)
     {
         String safeString = input;
@@ -29,6 +34,11 @@ public class ActionHelper {
         return safeString;
     }
     
+    /**
+     *
+     * @param password
+     * @return
+     */
     public String hashPassword(String password){
         String digest;
         try {

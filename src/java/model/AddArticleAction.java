@@ -53,7 +53,7 @@ public class AddArticleAction extends ActionSupport {
     public String getUrl() {
         return url;
     }
-
+    
     public void setUrl(String url) {
         this.url = url;
     }
