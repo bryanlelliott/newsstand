@@ -23,6 +23,7 @@ public class AddArticleAction extends ActionSupport {
     private String url;
     private String title;
     private String category;
+    private String authorName;
     
     private Date addDate;
 
@@ -74,6 +75,14 @@ public class AddArticleAction extends ActionSupport {
         this.category = category;
     }
 
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
     public Date getAddDate() {
         return addDate;
     }
@@ -106,7 +115,7 @@ public class AddArticleAction extends ActionSupport {
     public String execute(){
         DBUpdate dbu = new DBUpdate();
         articleId = dbu.generateID("ART");
-        dbu.insertArticle(articleId, url, authorId, providerId, title, addDate, category);
+        dbu.insertArticle(articleId, url, authorName, providerId, title, addDate, category);
         return SUCCESS;
     }
 }

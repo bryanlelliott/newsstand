@@ -16,6 +16,7 @@ import java.util.*;
 public class DBUpdate {
     
     private DBCommandHandler dbComHand = new DBCommandHandler();
+    private DBQueryHandler dbqh = new DBQueryHandler();
     
     public boolean insertUser(String userId, String password, 
         String email,String realName, String bio, int secretQuestion,
@@ -63,7 +64,25 @@ public class DBUpdate {
     }
 
     public boolean insertArticle(int articleId, String url, 
-        int authorId, int providerId, String title, Date addDate, String category) {
+         String authorName, int providerId, String title, Date addDate, String category) {
+        
+        int authorId = 0;
+        
+        if (!authorExists(authorName)){
+            authorId = generateID("AUT");
+            insertAuthor(authorId, authorName);
+        }
+        else {
+            try {
+                ResultSet authorResult = dbqh.doQuery("SELECT authorID FROM authors "
+                    + "WHERE authorName = " + authorName + ";");
+                
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                return false;
+            }  
+        }
+        
         String command = "INSERT INTO articles VALUES ("
                 + articleId + ", " + url + ", " + authorId +
                 ", " + providerId + ", " + title + ", " +
@@ -99,6 +118,20 @@ public class DBUpdate {
     public boolean insertProvider(int providerId, String providerName){
         String command = "INSERT INTO ratings VALUES ("
             + providerId + ", " + providerName + ");";
+
+        try {
+            int resultCount = dbComHand.doCommand(command);
+            dbComHand.close();
+            return (resultCount > 0);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }      
+    }
+    
+    public boolean insertAuthor(int authorId, String authorName){
+        String command = "INSERT INTO authors VALUES ("
+            + authorId + ", " + authorName + ");";
 
         try {
             int resultCount = dbComHand.doCommand(command);
@@ -197,7 +230,6 @@ public class DBUpdate {
         boolean found = false;        
         int idNum = 0;
         
-        DBQueryHandler dbqh = new DBQueryHandler();
         ResultSet rs = null;
         
         try {
@@ -211,19 +243,19 @@ public class DBUpdate {
                         }
                         break;
                     case "AUT": //authors
-                        rs = dbqh.doQuery("SELECT authorID FROM authors WHERE articleID = " + idNum + ";");
+                        rs = dbqh.doQuery("SELECT authorID FROM authors WHERE authorID = " + idNum + ";");
                         if (rs == null){
                             found = true;
                         }
                         break;
                     case "PRV": //providers
-                        rs = dbqh.doQuery("SELECT providerID FROM providers WHERE articleID = " + idNum + ";");
+                        rs = dbqh.doQuery("SELECT providerID FROM providers WHERE providerID = " + idNum + ";");
                         if (rs == null){
                             found = true;
                         }
                         break;
                     case "RAT":
-                        rs = dbqh.doQuery("SELECT ratingID FROM ratings WHERE articleID = " + idNum + ";");
+                        rs = dbqh.doQuery("SELECT ratingID FROM ratings WHERE ratingID = " + idNum + ";");
                         if (rs == null){
                             found = true;
                         }
@@ -239,5 +271,24 @@ public class DBUpdate {
         }
                   
         return idNum;
+    }
+    
+    public boolean authorExists(String authorName){
+        
+        try {
+            ResultSet rs = dbqh.doQuery("SELECT authorName FROM authors "
+                + "WHERE authorName = " + authorName + ";");
+            if (rs != null) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return false;
+        }
+        
+        
     }
 }
