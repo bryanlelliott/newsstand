@@ -75,7 +75,7 @@ public String execute() {
         }
         else
         {
-            return "FAILURE";
+            return "input";
         }
     }
 

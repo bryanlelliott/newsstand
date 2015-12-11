@@ -5,6 +5,7 @@
  */
 package model;
 import com.opensymphony.xwork2.ActionSupport;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
  *
@@ -16,51 +17,53 @@ public class lostPasswordAction extends ActionSupport {
     private String secretAnswer;
     
         public void validate() {
-        // ask secret question
         
-        String query = "SELECT * FROM users WHERE userRecoveryQuestionID = '" + secretQuestion 
-                    + "' AND userRecoveryAnswer = '" + secretAnswer + "'";
-            
-          
-          /*
-            try {
-                handler.doQuery(query);
-            }
-            catch(SQLException SQLE)
-            {
-                SQLE.printStackTrace();
-            }
-            
-            // compare the result 
-            // if the query returns null, then there is not a match.
-               if (result == null) {
-                // redirect to login.jsp because the password didnt work.
-               }
-               else if (result != null) {
-                   execute();
-               }
-
-              */ 
-            // compare the result 
+        ActionHelper helper = new ActionHelper();
+        
+        userId = helper.injectionReplace(userId);
+        secretAnswer = helper.injectionReplace(secretAnswer);
         }
         
         public String execute() {
-            
-            
-            String newPassword = "X0j9eS3jlPo";
+           
             DBQueryHandler handler = new DBQueryHandler();
-            String query = "UPDATE users SET userPassword '" + newPassword + "'"
-                    + "WHERE userId = '" + userId + "'";
+            String query = "SELECT * FROM users WHERE userRecoveryAnswer='" +
+                    secretAnswer + "'";
+            boolean found = false;
             
             try {
-                handler.doQuery(query);
+                ResultSet rs = handler.doQuery(query);
+                if( rs.next() )
+                {
+                    found = true;
+                }
+                else
+                {
+                    found = false;
+                }
             }
             catch(SQLException E)
             {
                 E.printStackTrace();
             }
-            
-            return SUCCESS;
+            if( found )
+            {
+                String newPassword = "X0j9eS3jlPo";
+                query = "UPDATE users SET password='" + newPassword +
+                        "' WHERE userId ='" + userId + "'";
+                try {
+                    handler.doQuery(query);
+                }
+                catch( SQLException e )
+                {
+                    e.printStackTrace();
+                }
+                return SUCCESS;
+            }
+            else
+            {
+                return "input";
+            }
         }
    
 
