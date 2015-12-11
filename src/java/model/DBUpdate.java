@@ -136,15 +136,12 @@ public class DBUpdate {
     }
     
     public boolean updateUser(String userId, String password, 
-        String email,String realName, String bio, int secretQuestion,
-            String secretAnswer){
+        String email,String realName, String bio{
         
         String command = "UPDATE TABLE users SET userEmail = "
                 + email + ", userRealName = "
                 + realName + ", userBio = " 
-                + bio + ", userRecoveryQuestionID" 
-                + secretQuestion + ", userRecoveryAnswer = "
-                + secretAnswer + "WHERE userID = " + userId + ";";
+                + bio + " WHERE userID = " + userId + ";";
 
         try {
             int resultCount = dbComHand.doCommand(command);
@@ -157,16 +154,13 @@ public class DBUpdate {
     }
     
     public boolean updateUser(String userId, String password, String oldPassword,
-        String email,String realName, String bio, int secretQuestion,
-            String secretAnswer){
+        String email,String realName, String bio){
         
         String command = "UPDATE TABLE users SET userPassword = "
                 + password + ", userEmail = "
                 + email + ", userRealName = "
                 + realName + ", userBio = " 
-                + bio + ", userRecoveryQuestionID" 
-                + secretQuestion + ", userRecoveryAnswer = "
-                + secretAnswer + "WHERE userID = " + userId 
+                + bio + " WHERE userID = " + userId 
                 + " AND userPassword = " + oldPassword + ";";
 
         try {
