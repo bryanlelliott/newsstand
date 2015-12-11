@@ -9,6 +9,6 @@ package model;
  *
  * @author katie
  */
-public class deleteArticleAction {
+public class ViewArticleAction {
     
 }

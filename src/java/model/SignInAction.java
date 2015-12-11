@@ -12,7 +12,7 @@ import java.sql.SQLException;
  *
  * @author katie
  */
-public class signInAction extends ActionSupport {
+public class SignInAction extends ActionSupport {
     private String userId;    
     private String password; 
     private boolean loggedIn;

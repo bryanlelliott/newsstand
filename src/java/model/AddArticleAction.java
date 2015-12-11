@@ -9,6 +9,6 @@ package model;
  *
  * @author katie
  */
-public class addArticleAction {
+public class AddArticleAction {
     
 }

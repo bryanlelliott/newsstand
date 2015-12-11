@@ -11,7 +11,7 @@ import java.sql.SQLException;
  *
  * @author katie
  */
-public class lostPasswordAction extends ActionSupport {
+public class LostPasswordAction extends ActionSupport {
     private String userId;
     private int secretQuestion;
     private String secretAnswer;

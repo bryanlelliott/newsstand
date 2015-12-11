@@ -13,7 +13,7 @@ import java.sql.SQLException;
  *
  * @author katie
  */
-public class editProfileAction extends ActionSupport{
+public class EditProfileAction extends ActionSupport{
     private String editName;
     private String editEmail;
     private String editBio;
