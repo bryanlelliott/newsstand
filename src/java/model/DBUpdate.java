@@ -136,7 +136,7 @@ public class DBUpdate {
     }
     
     public boolean updateUser(String userId, String password, 
-        String email,String realName, String bio{
+        String email,String realName, String bio){
         
         String command = "UPDATE TABLE users SET userEmail = "
                 + email + ", userRealName = "
