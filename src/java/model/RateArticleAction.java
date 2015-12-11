@@ -23,6 +23,56 @@ public class RateArticleAction extends ActionSupport {
     private String ratingText;
 
     private Date ratingDate;
+
+    public int getRatingID() {
+        return ratingID;
+    }
+
+    public void setRatingID(int ratingID) {
+        this.ratingID = ratingID;
+    }
+
+    public int getArticleID() {
+        return articleID;
+    }
+
+    public void setArticleID(int articleID) {
+        this.articleID = articleID;
+    }
+
+    public int getRatingValue() {
+        return ratingValue;
+    }
+
+    public void setRatingValue(int ratingValue) {
+        this.ratingValue = ratingValue;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getRatingText() {
+        return ratingText;
+    }
+
+    public void setRatingText(String ratingText) {
+        this.ratingText = ratingText;
+    }
+
+    public Date getRatingDate() {
+        return ratingDate;
+    }
+
+    public void setRatingDate(Date ratingDate) {
+        this.ratingDate = ratingDate;
+    }
+    
+    
         
     public void validate() {
         DBQueryHandler handler = new DBQueryHandler();

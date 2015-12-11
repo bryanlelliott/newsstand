@@ -16,6 +16,15 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
  */
 public class DeleteArticleAction extends ActionSupport {
     private int articleId;
+
+    public int getArticleId() {
+        return articleId;
+    }
+
+    public void setArticleId(int articleId) {
+        this.articleId = articleId;
+    }
+    
     
     public void validate(){
         
