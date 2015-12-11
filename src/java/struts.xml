@@ -5,14 +5,14 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        <action name="signup" class="model.signUpAction">
+        <action name="signup" class="model.SignUpAction">
             <result name="success">list.jsp</result>
         </action>
-        <action name="signin" class="model.signInAction">
+        <action name="signin" class="model.SignInAction">
             <result name="success">list.jsp</result>
             <result name="input">login.jsp</result>
         </action>
-        <action name="lostpassword" class="model.lostPasswordAction">
+        <action name="lostpassword" class="model.LostPasswordAction">
             <result name="success">login.jsp</result>
             <result name="input">lostpassword.jsp</result>
         </action>
