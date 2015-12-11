@@ -139,13 +139,35 @@ public class DBUpdate {
         String email,String realName, String bio, int secretQuestion,
             String secretAnswer){
         
+        String command = "UPDATE TABLE users SET userEmail = "
+                + email + ", userRealName = "
+                + realName + ", userBio = " 
+                + bio + ", userRecoveryQuestionID" 
+                + secretQuestion + ", userRecoveryAnswer = "
+                + secretAnswer + "WHERE userID = " + userId + ";";
+
+        try {
+            int resultCount = dbComHand.doCommand(command);
+            dbComHand.close();
+            return (resultCount > 0);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }  
+    }
+    
+    public boolean updateUser(String userId, String password, String oldPassword,
+        String email,String realName, String bio, int secretQuestion,
+            String secretAnswer){
+        
         String command = "UPDATE TABLE users SET userPassword = "
                 + password + ", userEmail = "
                 + email + ", userRealName = "
                 + realName + ", userBio = " 
                 + bio + ", userRecoveryQuestionID" 
                 + secretQuestion + ", userRecoveryAnswer = "
-                + secretAnswer + "WHERE userID = " + userId + ";";
+                + secretAnswer + "WHERE userID = " + userId 
+                + " AND userPassword = " + oldPassword + ";";
 
         try {
             int resultCount = dbComHand.doCommand(command);
