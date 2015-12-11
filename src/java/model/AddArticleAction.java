@@ -84,7 +84,23 @@ public class AddArticleAction extends ActionSupport {
     
     
     public void validate(){
+        ActionHelper helper = new ActionHelper();
         
+        if(url == null )
+        {
+            addFieldError("url", "This field cannot be left blank.");
+        }
+        else if(title == null )
+        {
+            addFieldError("title", "This field cannot be blank.");
+        }
+         else if(category == null )
+        {
+            addFieldError("category", "This field cannot be blank.");
+        }
+        category = helper.injectionReplace(category);
+        title = helper.injectionReplace(title);
+        url = helper.injectionReplace(url);
     }
     
     public String execute(){

@@ -17,7 +17,6 @@ public class SignUpAction extends ActionSupport {
     private String userId;    
     private String password; 
     private boolean submitted;    
-    // from bryan?
     private boolean loggedIn;
     private String realName;
     private String bio = "This user has not created a bio yet.";
@@ -77,7 +76,6 @@ public class SignUpAction extends ActionSupport {
         this.submitted = submitted;
     }
     
-    // not sure if i need this
     public void validate() {
         ActionHelper helper = new ActionHelper();
         
