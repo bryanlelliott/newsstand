@@ -79,7 +79,7 @@
 										<div class="row">
 											<div class="col-lg-12">
 												<div class="text-center">
-													<a href="#" tabindex="5" class="forgot-password">Forgot Password?</a>
+													<a href="lostpassword.jsp" tabindex="5" class="forgot-password">Forgot Password?</a>
 												</div>
 											</div>
 										</div>
@@ -104,6 +104,19 @@
 									<div class="form-group">
 										<input type="text" name="bio" id="bio" tabindex="1" class="form-control" placeholder="Your short bio" value="">
 									</div>
+                                                                        <hr>
+                                                                        <div class="form-group">
+                                                                            <select class="form-control" id="secretQuestion" name="question">
+                                                                              <option>What is the first name of your childhood best friend?</option>
+                                                                              <option>What city were you born in?</option>
+                                                                              <option>What is the name of your first pet?</option>
+                                                                              <option>What is your favorite color?</option>
+                                                                              <option>Who is your favorite celebrity?</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group">
+										<input type="text" name="answer" id="bio" tabindex="1" class="form-control" placeholder="Your answer" value="">
+									</div> 
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-6 col-sm-offset-3">
