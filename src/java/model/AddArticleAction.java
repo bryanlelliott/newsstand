@@ -105,6 +105,7 @@ public class AddArticleAction extends ActionSupport {
     
     public String execute(){
         DBUpdate dbu = new DBUpdate();
+        articleId = dbu.generateID("ART");
         dbu.insertArticle(articleId, url, authorId, providerId, title, addDate, category);
         return SUCCESS;
     }

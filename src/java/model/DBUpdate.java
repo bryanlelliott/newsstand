@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -60,7 +61,7 @@ public class DBUpdate {
         }             
         
     }
-    
+
     public boolean insertArticle(int articleId, String url, 
         int authorId, int providerId, String title, Date addDate, String category) {
         String command = "INSERT INTO articles VALUES ("
@@ -77,7 +78,7 @@ public class DBUpdate {
             return false;
         }              
     }
-    
+
     public boolean insertRating(int ratingId, String userId,
         int articleId, int ratingValue, String ratingText, Date ratingDate) {
         String command = "INSERT INTO ratings VALUES ("
@@ -94,7 +95,7 @@ public class DBUpdate {
             return false;
         }              
     }
-    
+
     public boolean insertProvider(int providerId, String providerName){
         String command = "INSERT INTO ratings VALUES ("
             + providerId + ", " + providerName + ");";
@@ -108,7 +109,7 @@ public class DBUpdate {
             return false;
         }      
     }
-    
+
     public boolean deleteAccount(String userId){
         String command = "DELETE FROM users WHERE userID = " + userId + ";";
 
@@ -121,7 +122,7 @@ public class DBUpdate {
             return false;
         }      
     }
-    
+ 
     public boolean deleteContent(int articleId) {
         String command = "DELETE FROM articles WHERE articleID = " + articleId + ";";
 
@@ -134,7 +135,7 @@ public class DBUpdate {
             return false;
         }     
     }
-    
+ 
     public boolean updateUser(String userId, String password, 
         String email,String realName, String bio){
         
@@ -152,7 +153,7 @@ public class DBUpdate {
             return false;
         }  
     }
-    
+
     public boolean updateUser(String userId, String password, String oldPassword,
         String email,String realName, String bio){
         
@@ -172,7 +173,7 @@ public class DBUpdate {
             return false;
         }  
     }
-    
+
     public boolean updateCategory(int articleId, String category){
         
         int articleCategoryId = 0;
@@ -189,5 +190,54 @@ public class DBUpdate {
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
-        }      }
+        }      
+    }
+    
+    public int generateID(String column){
+        boolean found = false;        
+        int idNum = 0;
+        
+        DBQueryHandler dbqh = new DBQueryHandler();
+        ResultSet rs = null;
+        
+        try {
+            while (!found) {
+                idNum = (int) Math.random() * 99999999;
+                switch(column){
+                    case "ART": //articles
+                        rs = dbqh.doQuery("SELECT articleID FROM articles WHERE articleID = " + idNum + ";");
+                        if (rs == null){
+                            found = true;
+                        }
+                        break;
+                    case "AUT": //authors
+                        rs = dbqh.doQuery("SELECT authorID FROM authors WHERE articleID = " + idNum + ";");
+                        if (rs == null){
+                            found = true;
+                        }
+                        break;
+                    case "PRV": //providers
+                        rs = dbqh.doQuery("SELECT providerID FROM providers WHERE articleID = " + idNum + ";");
+                        if (rs == null){
+                            found = true;
+                        }
+                        break;
+                    case "RAT":
+                        rs = dbqh.doQuery("SELECT ratingID FROM ratings WHERE articleID = " + idNum + ";");
+                        if (rs == null){
+                            found = true;
+                        }
+                        break;
+                    default:
+                        idNum = 0;
+                        break;   
+                }
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return 0;
+        }
+                  
+        return idNum;
+    }
 }

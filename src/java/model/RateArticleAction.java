@@ -81,6 +81,7 @@ public class RateArticleAction extends ActionSupport {
     
     public String execute() {
         DBUpdate dbu = new DBUpdate();
+        ratingID = dbu.generateID("RAT");
         dbu.insertRating(ratingID, userID, articleID, ratingValue, ratingText, ratingDate);
         return SUCCESS;
     }
