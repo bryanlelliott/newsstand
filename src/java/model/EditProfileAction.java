@@ -20,9 +20,18 @@ public class EditProfileAction extends ActionSupport{
     private String oldPassword;
     private String editPassword;
     private String confirmPassword;
+    private String userId;
 
     public String getEditName() {
         return editName;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public void setEditName(String editName) {
@@ -73,6 +82,15 @@ public class EditProfileAction extends ActionSupport{
     {
         ActionHelper helper = new ActionHelper();
         
+        if( editName == null )
+        {
+            addFieldError("editName", "This field cannot be left blank.");
+        }
+        else if( editEmail == null )
+        {
+            addFieldError("editEmail", "This field cannot be blank.");
+        }
+ 
         editName = helper.injectionReplace(editName);
         editEmail = helper.injectionReplace(editEmail);
         editBio = helper.injectionReplace(editBio);
@@ -115,6 +133,14 @@ public class EditProfileAction extends ActionSupport{
                     {
                         addFieldError("editPassword", "Your new password cannot be longer than 20 characters.");
                     }
+                    else if( confirmPassword == null )
+                    {
+                        addFieldError("confirmPassword", "You must confirm your new password.");
+                    }
+                    else if( confirmPassword.length() > 20 )
+                    {
+                        addFieldError("confirmPassword", "Your new password cannot be longer than 20 characters.");
+                    }
                     else
                     {
                         editPassword = helper.hashPassword(editPassword);
@@ -126,9 +152,15 @@ public class EditProfileAction extends ActionSupport{
     
     public String execute()
     {
-        if( editName != null )
+        DBUpdate updater = new DBUpdate();
+        
+        if( oldPassword != null )
         {
-            String query = "PUT SOMETHING HERE TOMORROW LOL";
+            updater.updateUser(userId, editPassword, editEmail, editName, NONE, editName);
+        }
+        else
+        {
+            updater.updateUser(userId, editEmail, editName, NONE, editName)
         }
         return "";
     }

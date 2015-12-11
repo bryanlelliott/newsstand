@@ -21,7 +21,8 @@ public class SignInAction extends ActionSupport {
     private String userType = "Regular";
     
 public void validate() {
-    ActionHelper helper = new ActionHelper();   
+    ActionHelper helper = new ActionHelper();
+    DBQueryHandler handler = new DBQueryHandler();
     
     if( userId == null )
        {
@@ -44,37 +45,37 @@ public void validate() {
            userId = helper.injectionReplace(userId);
            password = helper.hashPassword(password);
            
-           String query = "SELECT userId FROM users WHERE password='" +
-                   password + "'";
+           String query = "SELECT userId FROM users WHERE userId='" +
+                   userId + "'";
        }
     }
 public String execute() {
         
-        String query = "SELECT userId FROM users WHERE password='" +
-                   password + "'";
+        String query = "SELECT password FROM users WHERE userId='" +
+                   userId + "'";
         DBQueryHandler handler = new DBQueryHandler();
-        boolean found = false;
+        ActionHelper helper = new ActionHelper();
+        String userPassword = "";
+   
         try {
-            ResultSet rs = handler.doQuery(query);
-            if( rs.next() )
+            ResultSet rs2 = handler.doQuery(query);
+            if( rs2.getString("userPassword") != null )
             {
-                found = true;
-            }
-            else
-            {
-                found = false;
+                userPassword = rs2.getString("userPassword");
             }
         }
         catch( SQLException e )
         {
             e.printStackTrace();
         }
-        if( found )
+        if( helper.hashPassword(password).equals(userPassword) )
         {
+            loggedIn = true;
             return SUCCESS;
         }
         else
         {
+            loggedIn = false;
             return "input";
         }
     }
