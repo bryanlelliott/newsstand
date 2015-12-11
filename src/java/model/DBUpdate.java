@@ -61,7 +61,7 @@ public class DBUpdate {
         
     }
     
-    private boolean insertArticle(int articleId, String url, 
+    public boolean insertArticle(int articleId, String url, 
         int authorId, int providerId, String title, Date addDate, String category) {
         String command = "INSERT INTO articles VALUES ("
                 + articleId + ", " + url + ", " + authorId +
@@ -78,7 +78,7 @@ public class DBUpdate {
         }              
     }
     
-    private boolean insertRating(boolean loggedIn, int ratingId, String userId,
+    public boolean insertRating(int ratingId, String userId,
         int articleId, int ratingValue, String ratingText, Date ratingDate) {
         String command = "INSERT INTO ratings VALUES ("
             + ratingId + ", " + userId + ", " + articleId +
@@ -95,7 +95,7 @@ public class DBUpdate {
         }              
     }
     
-    private boolean insertProvider(int providerId, String providerName){
+    public boolean insertProvider(int providerId, String providerName){
         String command = "INSERT INTO ratings VALUES ("
             + providerId + ", " + providerName + ");";
 
@@ -109,7 +109,7 @@ public class DBUpdate {
         }      
     }
     
-    private boolean deleteAccount(String userId){
+    public boolean deleteAccount(String userId){
         String command = "DELETE FROM users WHERE userID = " + userId + ";";
 
         try {
@@ -122,7 +122,7 @@ public class DBUpdate {
         }      
     }
     
-    private boolean deleteContent(int articleId) {
+    public boolean deleteContent(int articleId) {
         String command = "DELETE FROM articles WHERE articleID = " + articleId + ";";
 
         try {
@@ -135,7 +135,7 @@ public class DBUpdate {
         }     
     }
     
-    private boolean updateUser(String userId, String password, 
+    public boolean updateUser(String userId, String password, 
         String email,String realName, String bio, int secretQuestion,
             String secretAnswer){
         
@@ -157,7 +157,7 @@ public class DBUpdate {
         }  
     }
     
-    private boolean updateCategory(int articleId, String category){
+    public boolean updateCategory(int articleId, String category){
         
         int articleCategoryId = 0;
         

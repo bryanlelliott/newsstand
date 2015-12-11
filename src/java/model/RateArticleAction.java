@@ -30,6 +30,8 @@ public class RateArticleAction extends ActionSupport {
     }
     
     public String execute() {
+        DBUpdate dbu = new DBUpdate();
+        dbu.insertRating(ratingID, userID, articleID, ratingValue, ratingText, ratingDate);
         return SUCCESS;
     }
 }
