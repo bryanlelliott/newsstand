@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package model;
-
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
