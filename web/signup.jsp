@@ -97,6 +97,7 @@
 										</div>
 									</div>
 								</form>
+                                                                <s:bean name="model.QuestionList">
 								<s:form id="register-form" action="signup" method="post" role="form" style="display: block;">
                                                                         <s:textfield name="realname" placeholder="Your name" class="form-group"/>
                                                                         <s:textfield name="email" placeholder="Your email" class="form-group"/>
@@ -104,8 +105,13 @@
                                                                         <s:password name="password" placeholder="Password"/>
                                                                         <s:password name="confirm-password" placeholder="Re-enter password"/>
                                                                         <s:textarea name="bio" placeholder="A sentence about yourself"/>
+                                                                        <hr>
+                                                                        <h5 style="text-align:center">Password Recovery Question</h5>
+                                                                        <s:select name="password-question" list="array" />
+                                                                        <s:textfield name="answer" placeholder="Your answer" />
                                                                         <s:submit value="submit" />
 								</s:form>
+                                                                </s:bean>
 							</div>
 						</div>
 					</div>
