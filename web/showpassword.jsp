@@ -1,6 +1,6 @@
 <%-- 
-    Document   : lostpassword
-    Created on : Dec 10, 2015, 7:20:07 PM
+    Document   : showpassword
+    Created on : Dec 10, 2015, 8:01:34 PM
     Author     : francis
 --%>
 
@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>Lost Password</title>
+<title>Show Password</title>
 
 <!-- Bootstrap CSS -->
 <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen">
@@ -45,27 +45,26 @@
 					</div>
 					<div class="panel-heading" style="padding-top:0">
 						<div class="row">
-                                                    <h3>Retrieve Password</h3>
+                                                    <h3>Your Login Credentials</h3>
 						</div>
-						<hr>
+						
 					</div>
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form id="login-form" action="showpassword.jsp" method="post" role="form" style="display: block;">
-                                                                        <h4 class="text-center">What is the name of your childhood best friend?</h4>
-                                                                        <br>
-									<div class="form-group">
-										<input type="text" name="answer" id="answer" tabindex="1" class="form-control" placeholder="Your Answer" value="">
-									</div>
-		
-									<div class="form-group">
-										<div class="row">
-											<div class="col-sm-6 col-sm-offset-3">
-												<input type="submit" name="retrieve-submit" id="retrieve-submit" tabindex="4" class="form-control btn btn-login" value="Submit">
-											</div>
-										</div>
-									</div>
+								<form id="login-form" action="browse.jsp" method="post" role="form" style="display: block;">
+                                                                        <table class="table table-user-information">
+                                                                            <tbody>
+                                                                              <tr>
+                                                                                <td><strong>Username</strong></td>
+                                                                                <td>madison2015</td>
+                                                                              </tr>
+                                                                              <tr>
+                                                                                <td><strong>Password</strong></td>
+                                                                                <td>*****</td>
+                                                                              </tr>
+                                                                            </tbody>
+                                                                          </table>
 								</form>
 							</div>
 						</div>
@@ -80,4 +79,5 @@
 
 </body>
 </html>
+
 
