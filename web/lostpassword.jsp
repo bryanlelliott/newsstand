@@ -53,6 +53,10 @@
 						<div class="row">
 							<div class="col-lg-12">
 								<form id="login-form" action="showpassword.jsp" method="post" role="form" style="display: block;">
+                                                                        <div class="form-group">
+										<input type="email" name="email" id="answer" tabindex="1" class="form-control" placeholder="Your Email" value="">
+									</div>
+                                                                        <hr>
                                                                         <h4 class="text-center">What is the name of your childhood best friend?</h4>
                                                                         <br>
 									<div class="form-group">
