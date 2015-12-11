@@ -16,13 +16,14 @@ import java.sql.SQLException;
 public class SignUpAction extends ActionSupport {
     private String userId;    
     private String password; 
-    private boolean submitted;    
-    private boolean loggedIn;
+    private String confirmPassword;
+    //private boolean submitted;    
+    //private boolean loggedIn;
     private String realName;
     private String bio = "This user has not created a bio yet.";
     private String email;
-    private String userType = "Regular";
-    private int secretQuestion;
+    // private String userType = "Regular";
+    private String secretQuestion;
     private String secretAnswer;
     
     DBQueryHandler handler = new DBQueryHandler();
@@ -42,14 +43,75 @@ public class SignUpAction extends ActionSupport {
         if (loggedIn == null || !loggedIn.booleanValue()) {   
                response.sendRedirect("/login.jsp"); }
     %> */  
-
-    public boolean getLoggedIn() {
-
-        return loggedIn;
-    }
-
-    public void setLoggedIn(boolean loggedIn) {
-        this.loggedIn = loggedIn;
+    
+    /*public void validate() {
+        // ActionHelper helper = new ActionHelper();
+        
+        if( userId == null )
+        {
+            addFieldError("userId", "This field cannot be blank.");
+        }
+        if( password == null )
+        {
+            addFieldError("password", "This field cannot be blank.");
+        }
+        if( realName == null )
+        {
+            addFieldError("realName", "This field cannot be blank.");
+        }
+        if( email == null )
+        {
+            addFieldError("email", "This field cannot be blank.");
+        }
+        if( userId.length() > 16 )
+        {
+            addFieldError("userId", "This field cannot be longer than 16 characters.");
+        }
+        if( password.length() > 20 )
+        {
+            addFieldError("password", "This field cannot be longer than 20 characters.");
+        }
+        if( realName.length() > 50 )
+        {
+            addFieldError("realName", "This field cannot be longer than 50 characters.");
+        }
+        if( email.length() > 50 )
+        {
+            addFieldError("email", "This field cannot be longer than 50 characters.");
+        }
+        if( bio.length() > 1000 )
+        {
+            addFieldError("bio", "This field cannot be longer than 1000 characters.");
+        }
+        if( secretAnswer.length() > 500 )
+        {
+            addFieldError("secretAnswer", "This field cannot be longer than 500 characters.");
+        }
+        
+        else
+        {
+            userId = helper.injectionReplace(userId);
+            password = helper.hashPassword(password);
+            realName = helper.injectionReplace(realName);
+            bio = helper.injectionReplace(bio);
+            email = helper.injectionReplace(email);
+            secretAnswer = helper.injectionReplace(secretAnswer);
+        }
+    } */
+    
+    public String execute() {
+        //DBUpdate updater = new DBUpdate();
+        
+        /*if (updater.insertUser(userId, password, email, realName, bio, secretQuestion, secretAnswer, "Regular"))
+            return SUCCESS;
+        else
+            return ERROR;*/
+        if (password.equals(confirmPassword))
+            return SUCCESS;
+        else {
+            addFieldError("confirmPassword", "The passwords must be matching");
+            return INPUT;
+        }
     }
     
     public String getUserId() {
@@ -67,75 +129,53 @@ public class SignUpAction extends ActionSupport {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public boolean getSubmitted() {
-        return submitted;
-    }
-
-    public void setSubmitted(boolean submitted) {
-        this.submitted = submitted;
+    
+    public String getConfirmPassword() {
+        return confirmPassword;
     }
     
-    public void validate() {
-        ActionHelper helper = new ActionHelper();
-        
-        if( userId == null )
-        {
-            addFieldError("userId", "This field cannot be blank.");
-        }
-        else if( password == null )
-        {
-            addFieldError("password", "This field cannot be blank.");
-        }
-        else if( realName == null )
-        {
-            addFieldError("realName", "This field cannot be blank.");
-        }
-        else if( email == null )
-        {
-            addFieldError("email", "This field cannot be blank.");
-        }
-        else if( userId.length() > 16 )
-        {
-            addFieldError("userId", "This field cannot be longer than 16 characters.");
-        }
-        else if( password.length() > 20 )
-        {
-            addFieldError("password", "This field cannot be longer than 20 characters.");
-        }
-        else if( realName.length() > 50 )
-        {
-            addFieldError("realName", "This field cannot be longer than 50 characters.");
-        }
-        else if( email.length() > 50 )
-        {
-            addFieldError("email", "This field cannot be longer than 50 characters.");
-        }
-        else if( bio.length() > 1000 )
-        {
-            addFieldError("bio", "This field cannot be longer than 1000 characters.");
-        }
-        else if( secretAnswer.length() > 500 )
-        {
-            addFieldError("secretAnswer", "This field cannot be longer than 500 characters.");
-        }
-        else
-        {
-            userId = helper.injectionReplace(userId);
-            password = helper.hashPassword(password);
-            realName = helper.injectionReplace(realName);
-            bio = helper.injectionReplace(bio);
-            email = helper.injectionReplace(email);
-            secretAnswer = helper.injectionReplace(secretAnswer);
-        }
-    } 
-   
-    public String execute() {
-        DBUpdate updater = new DBUpdate();
-        
-        updater.insertUser(userId, password, email, realName, bio, secretQuestion, secretAnswer, userType);
-        
-        return SUCCESS;
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
-
+    
+    public String getRealName() {
+        return realName;
+    }
+    
+    public void setRealName(String realName)
+    {
+        this.realName = realName;
+    }
+    
+    public String getBio() {
+        return bio;
+    }
+    
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    public String getSecretQuestion() {
+        return secretQuestion;
+    }
+    
+    public void setSecretQuestion(String secretQuestion) {
+        this.secretQuestion = secretQuestion;
+    }
+    
+    public String getSecretAnswer() {
+        return secretAnswer;
+    }
+    
+    public void setSecretAnswer(String secretAnswer) {
+        this.secretAnswer = secretAnswer;
+    }
 }

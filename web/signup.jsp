@@ -46,6 +46,7 @@
 
 </head>
 <body id="signup">
+
 <div class="container">
     	<div class="row">
 			<div class="col-md-6 col-md-offset-3">
@@ -99,19 +100,20 @@
 								</form>
                                                                 <s:bean name="model.QuestionList">
 								<s:form id="register-form" action="signup" method="post" role="form" style="display: block;">
-                                                                        <s:textfield name="realname" placeholder="Your name" class="form-group"/>
+                                                                        <s:textfield name="realName" placeholder="Your name" class="form-group" validate="true"/>
                                                                         <s:textfield name="email" placeholder="Your email" class="form-group"/>
-                                                                        <s:textfield name="username" placeholder="Username"/>
-                                                                        <s:password name="password" placeholder="Password"/>
-                                                                        <s:password name="confirm-password" placeholder="Re-enter password"/>
+                                                                        <s:textfield name="userId" placeholder="Username" validate="true"/>
+                                                                        <s:password name="password" placeholder="Password" validate="true"/>
+                                                                        <s:password name="confirmPassword" placeholder="Re-enter password"/>
                                                                         <s:textarea name="bio" placeholder="A sentence about yourself"/>
                                                                         <hr>
                                                                         <h5 style="text-align:center">Password Recovery Question</h5>
-                                                                        <s:select name="password-question" list="array" />
-                                                                        <s:textfield name="answer" placeholder="Your answer" />
+                                                                        <s:select name="secretQuestion" list="array" />
+                                                                        <s:textfield name="secretAnswer" placeholder="Your answer" />
                                                                         <s:submit value="submit" />
 								</s:form>
                                                                 </s:bean>
+                                                                        
 							</div>
 						</div>
 					</div>
