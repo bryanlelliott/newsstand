@@ -24,11 +24,11 @@ public class SignInAction extends ActionSupport {
     ActionHelper helper = new ActionHelper();
     DBQueryHandler handler = new DBQueryHandler();
     
-    if( userId == null )
+    if( userId.length() == 0 || userId == null )
        {
            addFieldError("userId", "This field cannot be blank.");
        }
-       else if( password == null )
+       else if( password.length() == 0 || password == null )
        {
            addFieldError("password", "This field cannot be blank.");
        }
@@ -44,9 +44,6 @@ public class SignInAction extends ActionSupport {
        {
            userId = helper.injectionReplace(userId);
            password = helper.hashPassword(password);
-           
-           String query = "SELECT userId FROM users WHERE userId='" +
-                   userId + "'";
        }
     }
     public String execute() {
@@ -68,7 +65,7 @@ public class SignInAction extends ActionSupport {
         {
             e.printStackTrace();
         }
-        if( helper.hashPassword(password).equals(userPassword) )
+        if( password.equals(userPassword) )
         {
             loggedIn = true;
             return SUCCESS;
