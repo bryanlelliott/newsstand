@@ -16,19 +16,16 @@ public class SignInAction extends ActionSupport {
     private String userId;    
     private String password; 
     private boolean loggedIn;
-    
-    // perhaps use userType     
-    private String userType = "Regular";
 
-    public void validate() {
+    /*public void validate() {
     ActionHelper helper = new ActionHelper();
     DBQueryHandler handler = new DBQueryHandler();
     
-    if( userId == null )
+    if( userId.length() == 0 || userId == null )
        {
            addFieldError("userId", "This field cannot be blank.");
        }
-       else if( password == null )
+       else if( password.length() == 0 || password == null )
        {
            addFieldError("password", "This field cannot be blank.");
        }
@@ -44,40 +41,62 @@ public class SignInAction extends ActionSupport {
        {
            userId = helper.injectionReplace(userId);
            password = helper.hashPassword(password);
-           
-           String query = "SELECT userId FROM users WHERE userId='" +
-                   userId + "'";
        }
-    }
+    }*/
     public String execute() {
-        
-        String query = "SELECT password FROM users WHERE userId='" +
-                   userId + "'";
-        DBQueryHandler handler = new DBQueryHandler();
-        ActionHelper helper = new ActionHelper();
-        String userPassword = "";
+        String ret = INPUT;
+        /*String query = "SELECT password FROM users WHERE userId='" +
+                   userId + "'";*/
+        DBQueryProcessor processor = new DBQueryProcessor();
+        // ActionHelper helper = new ActionHelper();
    
-        try {
-            ResultSet rs2 = handler.doQuery(query);
-            if( rs2.getString("userPassword") != null )
+        /*try {
+            ResultSet rs = processor.getUser(userId, password);
+            if( rs != null)
             {
-                userPassword = rs2.getString("userPassword");
+                loggedIn = true;
+                ret = SUCCESS;
             }
-        }
-        catch( SQLException e )
-        {
-            e.printStackTrace();
-        }
-        if( helper.hashPassword(password).equals(userPassword) )
-        {
-            loggedIn = true;
-            return SUCCESS;
-        }
-        else
-        {
+        } catch( NullPointerException npe ) {
+            npe.printStackTrace();
             loggedIn = false;
-            return "input";
+            ret = INPUT;
+        }*/
+        ResultSet rs = processor.getUser(userId, password);
+        try {
+            while (rs.next()) {
+                userId = rs.getString(1);
+                ret = SUCCESS;
+             }
+        } catch(Exception ex)
+        {
+            ex.printStackTrace();
+            ret = ERROR;
         }
+        return ret;
     }
-
+    
+    public String getUserId() {
+        return userId;
+    }
+    
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
+    
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    public boolean getLoggedIn() {
+        return loggedIn;
+    }
+    
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
 }

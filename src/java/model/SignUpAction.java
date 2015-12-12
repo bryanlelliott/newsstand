@@ -8,6 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
  *
@@ -46,50 +47,61 @@ public class SignUpAction extends ActionSupport {
                response.sendRedirect("/login.jsp"); }
     %> */  
     
-    /*public void validate() {
-        // ActionHelper helper = new ActionHelper();
+    public void validate() {
+        ActionHelper helper = new ActionHelper();
         
-        if( userId == null )
+        if( userId.length() == 0 || userId == null )
         {
             addFieldError("userId", "This field cannot be blank.");
         }
-        if( password == null )
+        else if( password.length() == 0 || password == null )
         {
             addFieldError("password", "This field cannot be blank.");
         }
-        if( realName == null )
+        else if( realName.length() == 0 || realName == null )
         {
             addFieldError("realName", "This field cannot be blank.");
         }
-        if( email == null )
+        else if( email.length() == 0 || email == null )
         {
             addFieldError("email", "This field cannot be blank.");
         }
-        if( userId.length() > 16 )
+        else if( secretAnswer.length() == 0 || secretAnswer == null )
+        {
+            addFieldError("email", "This field cannot be blank.");
+        }
+        else if( confirmPassword.length() == 0 || confirmPassword == null )
+        {
+            addFieldError("confirmPassword", "This field cannot be left blank.");
+        }
+        else if( userId.length() > 16 )
         {
             addFieldError("userId", "This field cannot be longer than 16 characters.");
         }
-        if( password.length() > 20 )
+        else if( password.length() > 20 )
         {
             addFieldError("password", "This field cannot be longer than 20 characters.");
         }
-        if( realName.length() > 50 )
+        else if( realName.length() > 50 )
         {
             addFieldError("realName", "This field cannot be longer than 50 characters.");
         }
-        if( email.length() > 50 )
+        else if( email.length() > 50 )
         {
             addFieldError("email", "This field cannot be longer than 50 characters.");
         }
-        if( bio.length() > 1000 )
+        else if( bio.length() > 1000 )
         {
             addFieldError("bio", "This field cannot be longer than 1000 characters.");
         }
-        if( secretAnswer.length() > 500 )
+        else if( secretAnswer.length() > 500 )
         {
             addFieldError("secretAnswer", "This field cannot be longer than 500 characters.");
         }
-        
+        else if( !confirmPassword.equals(password) )
+        {
+            addFieldError("confirmPassword", "This field must be equivalent to your password.");
+        }
         else
         {
             userId = helper.injectionReplace(userId);
@@ -98,35 +110,49 @@ public class SignUpAction extends ActionSupport {
             bio = helper.injectionReplace(bio);
             email = helper.injectionReplace(email);
             secretAnswer = helper.injectionReplace(secretAnswer);
+            
+        if (secretQuestion.equals("What is the name of your childhood best friend?"))
+            questionNum = 1;
+        else if (secretQuestion.equals("What city were you born in?"))
+            questionNum = 2;
+        else if (secretQuestion.equals("What is the name of your first pet?"))
+            questionNum = 3;
+        else if (secretQuestion.equals("What is your favorite color?"))
+            questionNum = 4;
+        else if (secretQuestion.equals("Who is your favorite celebrity?"))
+            questionNum = 5;
         }
-    } */
+    } 
     
     public String execute() {
         DBUpdate updater = new DBUpdate();
+        DBQueryHandler dbqh = new DBQueryHandler();
+        String query = "SELECT userId FROM users WHERE userId=\'" + userId + "\'";
+        boolean found = false;
         
- 
-        if (secretQuestion.equals("What is the name of your childhood best friend?"))
-            questionNum = 1;
-        if (secretQuestion.equals("What city were you born in?"))
-            questionNum = 2;
-        if (secretQuestion.equals("What is the name of your first pet?"))
-            questionNum = 3;
-        if (secretQuestion.equals("What is your favorite color?"))
-            questionNum = 4;
-        if (secretQuestion.equals("Who is your favorite celebrity?"))
-            questionNum = 5;
-        if (password.equals(confirmPassword))
-        {
-            
+        try {
+            ResultSet rs = dbqh.doQuery(query);
+            if( rs.next() )
+            {
+                found = true;
+            }
+            else
+            {
+                found = false;
+            }
         }
-        else {
-            addFieldError("confirmPassword", "The passwords must be matching");
+        catch( SQLException e )
+        {
+            e.printStackTrace();
+        }
+        if (!found && updater.insertUser(userId, password, email, realName, bio, questionNum, secretAnswer, "Regular"))
+        {
+            return SUCCESS;
+        }
+        else
+        {
             return INPUT;
         }
-        if (updater.insertUser(userId, password, email, realName, bio, questionNum, secretAnswer, "Regular"))
-            return SUCCESS;
-        else
-            return ERROR;
     }
     
     public String getUserId() {

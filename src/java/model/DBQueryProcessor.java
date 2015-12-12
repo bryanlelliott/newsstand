@@ -85,8 +85,8 @@ public class DBQueryProcessor {
     
     public ResultSet getUser(String userId, String password){
         
-        String query = "SELECT * FROM users WHERE userid = \'" + userId 
-                + "AND userPassword = \'" + password;
+        String query = "SELECT * FROM users WHERE userID = \'" + userId 
+                + "\' AND userPassword = \'" + password + "\'";
         
         try {
             return dbqh.doQuery(query);

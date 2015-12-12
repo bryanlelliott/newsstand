@@ -82,11 +82,11 @@ public class EditProfileAction extends ActionSupport{
     {
         ActionHelper helper = new ActionHelper();
         
-        if( editName.length() == 0 )
+        if( editName.length() == 0 || editName == null )
         {
             addFieldError("editName", "This field cannot be left blank.");
         }
-        else if( editEmail.length() == 0 )
+        else if( editEmail.length() == 0 || editEmail == null )
         {
             addFieldError("editEmail", "This field cannot be blank.");
         }
@@ -99,7 +99,7 @@ public class EditProfileAction extends ActionSupport{
             oldPassword = helper.hashPassword(oldPassword);
             DBQueryHandler handler = new DBQueryHandler();
             String query = "SELECT * FROM users WHERE userPassword='" +
-                    oldPassword + "'";
+                    oldPassword + "'" + "AND userId='" + userId + "'";
             boolean found = false;
             try {
                 ResultSet rs = handler.doQuery(query);
