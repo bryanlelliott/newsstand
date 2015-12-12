@@ -20,6 +20,7 @@ public class ViewArticleAction {
             
         }
         public String execute() {
+            
             return SUCCESS;
         }
 }

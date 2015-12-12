@@ -73,7 +73,6 @@ public class RateArticleAction extends ActionSupport {
         this.ratingDate = ratingDate;
     }
     
-    
         
     public void validate() {
         DBQueryHandler handler = new DBQueryHandler();
