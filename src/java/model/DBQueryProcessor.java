@@ -16,7 +16,7 @@ public class DBQueryProcessor {
     
     DBQueryHandler dbqh = new DBQueryHandler();
 
-    private ResultSet getAuthor(String authorName){
+    public ResultSet getAuthor(String authorName){
         String query = "SELECT * FROM authors WHERE authorName = " + authorName + ";";
         
         try {
@@ -28,7 +28,7 @@ public class DBQueryProcessor {
         
     }
     
-    private ResultSet getUsers() {
+    public ResultSet getUsers() {
         
         String query = "SELECT * FROM users;";
         
@@ -40,7 +40,7 @@ public class DBQueryProcessor {
         }
     }
     
-    private ResultSet getContent(String userId){
+    public ResultSet getContent(String userId){
         
         String query = "SELECT a.articleURL, a.articleURL, a.authorID, "
             + "a.providerID, a.articleTitle, a.articleAddDate,"
@@ -57,7 +57,7 @@ public class DBQueryProcessor {
 
     }
     
-    private ResultSet getRelevantArticles(){
+    public ResultSet getRelevantArticles(){
         
         String query = "";
         
@@ -70,7 +70,7 @@ public class DBQueryProcessor {
 
     }
     
-    private ResultSet getPasswordRecovery(String userId){
+    public ResultSet getPasswordRecovery(String userId){
         
         String query = "";
         
@@ -83,10 +83,10 @@ public class DBQueryProcessor {
 
     }
     
-    private ResultSet getUser(String userId, String password){
+    public ResultSet getUser(String userId, String password){
         
-        String query = "SELECT * FROM users WHERE userid = \'" + userId 
-                + "AND userPassword = \'" + password;
+        String query = "SELECT * FROM users WHERE userID = \'" + userId 
+                + "\' AND userPassword = \'" + password + "\'";
         
         try {
             return dbqh.doQuery(query);
