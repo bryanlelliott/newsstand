@@ -23,7 +23,7 @@ public class SignUpAction extends ActionSupport {
     private String bio;
     private String email;
     // private String userType = "Regular";
-    private int secretQuestion;
+    //private int secretQuestion;
     private String secretAnswer;
     
     DBQueryHandler handler = new DBQueryHandler();
@@ -101,7 +101,7 @@ public class SignUpAction extends ActionSupport {
     public String execute() {
         DBUpdate updater = new DBUpdate();
         
-        if( updater.insertUser(userId, password, email, realName, bio, secretQuestion, secretAnswer, "Regular") )
+        if( updater.insertUser(userId, password, email, realName, bio, 2, secretAnswer, "Regular") )
         {
             return SUCCESS;
         }
@@ -160,13 +160,13 @@ public class SignUpAction extends ActionSupport {
         this.email = email;
     }
     
-    public int getSecretQuestion() {
+    /*public int getSecretQuestion() {
         return secretQuestion;
     }
     
     public void setSecretQuestion(int secretQuestion) {
         this.secretQuestion = secretQuestion;
-    }
+    }*/
     
     public String getSecretAnswer() {
         return secretAnswer;

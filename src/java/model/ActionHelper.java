@@ -29,7 +29,7 @@ public class ActionHelper {
         safeString = safeString.replaceAll("^\\($", "&#40");
         safeString = safeString.replaceAll("^\\)$", "&#41");
         safeString = safeString.replaceAll("^&$", "&#38");
-        safeString = safeString.replaceAll("^|$", "&#124");
+        safeString = safeString.replaceAll("^\\|$", "&#124");
             
         return safeString;
     }

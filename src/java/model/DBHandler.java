@@ -35,10 +35,10 @@ public abstract class DBHandler {
         try {
             Context envCtx = (Context) (new InitialContext())
                     .lookup("java:comp/env");
-            driverName = (String) envCtx.lookup("DriverClassName");
-            url = (String) envCtx.lookup("Url");
-            userId = (String) envCtx.lookup("UserId");
-            password = (String) envCtx.lookup("Password");
+            driverName = "com.mysql.jdbc.Driver";
+            url = "jdbc:mysql://us-cdbr-azure-southcentral-e.cloudapp.net/newsstand";
+            userId = "ba7e286a39aae9e";
+            password = "d89b6d9b";
         } catch (NamingException e) {
             e.printStackTrace();
         }

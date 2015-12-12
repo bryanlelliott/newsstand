@@ -17,13 +17,12 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 public class AddArticleAction extends ActionSupport {
     
     private int articleId;
-    private int authorId;
-    private int providerId;
     
     private String url;
     private String title;
     private String category;
     private String authorName;
+    private String providerName;
     
     private Date addDate;
 
@@ -33,23 +32,7 @@ public class AddArticleAction extends ActionSupport {
 
     public void setArticleId(int articleId) {
         this.articleId = articleId;
-    }
-
-    public int getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
-    }
-
-    public int getProviderId() {
-        return providerId;
-    }
-
-    public void setProviderId(int providerId) {
-        this.providerId = providerId;
-    }
+    } 
 
     public String getUrl() {
         return url;
@@ -91,31 +74,46 @@ public class AddArticleAction extends ActionSupport {
         this.addDate = addDate;
     }
     
+    public String getProviderName() {
+        return providerName;
+    }
+    
+    public void setProviderName() {
+        this.providerName = providerName;
+    }
+    
     
     public void validate(){
         ActionHelper helper = new ActionHelper();
         
-        if(url == null )
+        if( url.length() == 0 || url == null )
         {
             addFieldError("url", "This field cannot be left blank.");
         }
-        else if(title == null )
+        else if( title.length() == 0 || title == null )
         {
             addFieldError("title", "This field cannot be blank.");
         }
-         else if(category == null )
+        else if( authorName.length() == 0 || authorName == null )
         {
-            addFieldError("category", "This field cannot be blank.");
+            addFieldError("authorName", "This field cannot be left blank.");
         }
-        category = helper.injectionReplace(category);
+        else if( providerName.length() == 0 || providerName == null )
+        {
+            addFieldError("providerName", "This field cannot be left blank.");
+        }
+     
         title = helper.injectionReplace(title);
         url = helper.injectionReplace(url);
+        addDate = new Date();
+        authorName = helper.injectionReplace(authorName);
+        providerName = helper.injectionReplace(providerName);
     }
     
     public String execute(){
         DBUpdate dbu = new DBUpdate();
         articleId = dbu.generateID("ART");
-        dbu.insertArticle(articleId, url, authorName, providerId, title, addDate, category);
+        dbu.insertArticle(articleId, url, authorName, providerName, title, addDate, category);
         return SUCCESS;
     }
 }
