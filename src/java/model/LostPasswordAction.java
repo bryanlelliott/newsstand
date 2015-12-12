@@ -15,11 +15,23 @@ public class LostPasswordAction extends ActionSupport {
     private String userId;
     private int secretQuestion;
     private String secretAnswer;
+    private String password;
 
     public void validate() {
         
         ActionHelper helper = new ActionHelper();
-        
+        if( userId.length() == 0 )
+        {
+            addFieldError("userId", "You must enter your userId.");
+        }
+        else if( userId.length() > 16 )
+        {
+            addFieldError("userId", "There is no userId longer than 16 characters.");
+        }
+        else if( secretAnswer.length() == 0 )
+        {
+            addFieldError("secretAnswer", "You must answer your secret question.");
+        }
         userId = helper.injectionReplace(userId);
         secretAnswer = helper.injectionReplace(secretAnswer);
         }
@@ -27,8 +39,8 @@ public class LostPasswordAction extends ActionSupport {
     public String execute() {
            
             DBQueryHandler handler = new DBQueryHandler();
-            String query = "SELECT * FROM users WHERE userRecoveryAnswer='" +
-                    secretAnswer + "'";
+            String query = "SELECT password FROM users WHERE userRecoveryAnswer='" +
+                    secretAnswer + "'" + "AND userId='" + userId + "'";
             boolean found = false;
             
             try {
@@ -36,6 +48,7 @@ public class LostPasswordAction extends ActionSupport {
                 if( rs.next() )
                 {
                     found = true;
+                    password = rs.getString("userPassword");
                 }
                 else
                 {

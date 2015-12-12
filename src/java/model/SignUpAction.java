@@ -20,10 +20,10 @@ public class SignUpAction extends ActionSupport {
     //private boolean submitted;    
     //private boolean loggedIn;
     private String realName;
-    private String bio = "This user has not created a bio yet.";
+    private String bio;
     private String email;
     // private String userType = "Regular";
-    private String secretQuestion;
+    private int secretQuestion;
     private String secretAnswer;
     
     DBQueryHandler handler = new DBQueryHandler();
@@ -44,50 +44,49 @@ public class SignUpAction extends ActionSupport {
                response.sendRedirect("/login.jsp"); }
     %> */  
     
-    /*public void validate() {
-        // ActionHelper helper = new ActionHelper();
+    public void validate() {
+        ActionHelper helper = new ActionHelper();
         
-        if( userId == null )
+        if( userId.length() == 0 || userId == null )
         {
             addFieldError("userId", "This field cannot be blank.");
         }
-        if( password == null )
+        else if( password.length() == 0 || password == null )
         {
             addFieldError("password", "This field cannot be blank.");
         }
-        if( realName == null )
+        else if( realName.length() == 0 || realName == null )
         {
             addFieldError("realName", "This field cannot be blank.");
         }
-        if( email == null )
+        else if( email.length() == 0 || email == null )
         {
             addFieldError("email", "This field cannot be blank.");
         }
-        if( userId.length() > 16 )
+        else if( userId.length() > 16 )
         {
             addFieldError("userId", "This field cannot be longer than 16 characters.");
         }
-        if( password.length() > 20 )
+        else if( password.length() > 20 )
         {
             addFieldError("password", "This field cannot be longer than 20 characters.");
         }
-        if( realName.length() > 50 )
+        else if( realName.length() > 50 )
         {
             addFieldError("realName", "This field cannot be longer than 50 characters.");
         }
-        if( email.length() > 50 )
+        else if( email.length() > 50 )
         {
             addFieldError("email", "This field cannot be longer than 50 characters.");
         }
-        if( bio.length() > 1000 )
+        else if( bio.length() > 1000 )
         {
             addFieldError("bio", "This field cannot be longer than 1000 characters.");
         }
-        if( secretAnswer.length() > 500 )
+        else if( secretAnswer.length() > 500 )
         {
             addFieldError("secretAnswer", "This field cannot be longer than 500 characters.");
         }
-        
         else
         {
             userId = helper.injectionReplace(userId);
@@ -97,19 +96,17 @@ public class SignUpAction extends ActionSupport {
             email = helper.injectionReplace(email);
             secretAnswer = helper.injectionReplace(secretAnswer);
         }
-    } */
+    }
     
     public String execute() {
-        //DBUpdate updater = new DBUpdate();
+        DBUpdate updater = new DBUpdate();
         
-        /*if (updater.insertUser(userId, password, email, realName, bio, secretQuestion, secretAnswer, "Regular"))
+        if( updater.insertUser(userId, password, email, realName, bio, secretQuestion, secretAnswer, "Regular") )
+        {
             return SUCCESS;
+        }
         else
-            return ERROR;*/
-        if (password.equals(confirmPassword))
-            return SUCCESS;
-        else {
-            addFieldError("confirmPassword", "The passwords must be matching");
+        {
             return INPUT;
         }
     }
@@ -163,11 +160,11 @@ public class SignUpAction extends ActionSupport {
         this.email = email;
     }
     
-    public String getSecretQuestion() {
+    public int getSecretQuestion() {
         return secretQuestion;
     }
     
-    public void setSecretQuestion(String secretQuestion) {
+    public void setSecretQuestion(int secretQuestion) {
         this.secretQuestion = secretQuestion;
     }
     
