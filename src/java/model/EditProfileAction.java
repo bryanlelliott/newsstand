@@ -82,11 +82,11 @@ public class EditProfileAction extends ActionSupport{
     {
         ActionHelper helper = new ActionHelper();
         
-        if( editName == null )
+        if( editName.length() == 0 )
         {
             addFieldError("editName", "This field cannot be left blank.");
         }
-        else if( editEmail == null )
+        else if( editEmail.length() == 0 )
         {
             addFieldError("editEmail", "This field cannot be blank.");
         }
@@ -94,7 +94,7 @@ public class EditProfileAction extends ActionSupport{
         editName = helper.injectionReplace(editName);
         editEmail = helper.injectionReplace(editEmail);
         editBio = helper.injectionReplace(editBio);
-        if( oldPassword != null )
+        if( oldPassword.length() != 0 )
         {
             oldPassword = helper.hashPassword(oldPassword);
             DBQueryHandler handler = new DBQueryHandler();
@@ -125,7 +125,7 @@ public class EditProfileAction extends ActionSupport{
             {
                 if( editPassword.equals(confirmPassword) )
                 {
-                    if( editPassword == null )
+                    if( editPassword.length() == 0 )
                     {
                         addFieldError("editPassword", "Your new password cannot be empty.");
                     }
@@ -133,7 +133,7 @@ public class EditProfileAction extends ActionSupport{
                     {
                         addFieldError("editPassword", "Your new password cannot be longer than 20 characters.");
                     }
-                    else if( confirmPassword == null )
+                    else if( confirmPassword.length() == 0 )
                     {
                         addFieldError("confirmPassword", "You must confirm your new password.");
                     }
@@ -154,7 +154,7 @@ public class EditProfileAction extends ActionSupport{
     {
         DBUpdate updater = new DBUpdate();
         
-        if( oldPassword != null )
+        if( oldPassword.length() != 0 )
         {
             updater.updateUser(userId, editPassword, editEmail, editName, NONE, editName);
         }

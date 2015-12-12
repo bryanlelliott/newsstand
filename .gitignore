@@ -4,3 +4,5 @@ dist/
 *.war
 
 *.properties
+
+src/java/model/SignUpAction-validation.xml
