@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<s:set name="theme" value="'css_xhtml'" scope="page" />
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,6 +26,15 @@
 <!-- Font Awesome -->
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
+<style>
+        #register-form > div, #login-form > div {
+            margin-bottom:15px;
+            text-align:center;
+        }
+        .panel-login > input[type="text"] {
+            width:100%
+        }
+</style>  
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -57,74 +68,26 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form id="login-form" action="browse.jsp" method="post" role="form" style="display: block;">
-									<div class="form-group">
-										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
-									</div>
-									<div class="form-group">
-										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-									</div>
-									<div class="form-group text-center">
-										<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-										<label for="remember"> Remember Me</label>
-									</div>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-sm-6 col-sm-offset-3">
-												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="text-center">
-													<a href="lostpassword.jsp" tabindex="5" class="forgot-password">Forgot Password?</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</form>
-								<form id="register-form" action="" method="post" role="form" style="display: none;">
-									<div class="form-group">
-										<input type="text" name="realname" id="realname" tabindex="1" class="form-control" placeholder="Your name" value="">
-									</div>
-									<div class="form-group">
-										<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
-									</div>
-									<div class="form-group">
-										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
-									</div>
-									<div class="form-group">
-										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-									</div>
-									<div class="form-group">
-										<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-									</div>
-									<div class="form-group">
-										<input type="text" name="bio" id="bio" tabindex="1" class="form-control" placeholder="Your short bio" value="">
-									</div>
+								<s:form id="login-form" action="signin" method="post" role="form" style="display: block;">
+                                                                        <s:textfield name="userId" placeholder="Username" class="form-group"/>
+                                                                        <s:password name="password" placeholder="Password"/>
+                                                                        <s:submit value="submit" />
+								</s:form>
+								<s:bean name="model.QuestionList">
+								<s:form id="register-form" action="signup" method="post" role="form" style="display: none;">
+                                                                        <s:textfield name="realName" placeholder="Your name" class="form-group" validate="true"/>
+                                                                        <s:textfield name="email" placeholder="Your email" class="form-group"/>
+                                                                        <s:textfield name="userId" placeholder="Username" validate="true"/>
+                                                                        <s:password name="password" placeholder="Password" validate="true"/>
+                                                                        <s:password name="confirmPassword" placeholder="Re-enter password"/>
+                                                                        <s:textarea name="bio" placeholder="A sentence about yourself"/>
                                                                         <hr>
-                                                                        <div class="form-group">
-                                                                            <select class="form-control" id="secretQuestion" name="question">
-                                                                              <option>What is the first name of your childhood best friend?</option>
-                                                                              <option>What city were you born in?</option>
-                                                                              <option>What is the name of your first pet?</option>
-                                                                              <option>What is your favorite color?</option>
-                                                                              <option>Who is your favorite celebrity?</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="form-group">
-										<input type="text" name="answer" id="bio" tabindex="1" class="form-control" placeholder="Your answer" value="">
-									</div> 
-									<div class="form-group">
-										<div class="row">
-											<div class="col-sm-6 col-sm-offset-3">
-												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
-											</div>
-										</div>
-									</div>
-								</form>
+                                                                        <h5 style="text-align:center">Password Recovery Question</h5>
+                                                                        <s:select name="secretQuestion" list="array" />
+                                                                        <s:textfield name="secretAnswer" placeholder="Your answer" />
+                                                                        <s:submit value="submit" />
+								</s:form>
+                                                                </s:bean>
 							</div>
 						</div>
 					</div>
