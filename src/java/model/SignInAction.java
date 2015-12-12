@@ -20,7 +20,7 @@ public class SignInAction extends ActionSupport {
     // perhaps use userType     
     private String userType = "Regular";
 
-    public void validate() {
+    /*public void validate() {
     ActionHelper helper = new ActionHelper();
     DBQueryHandler handler = new DBQueryHandler();
     
@@ -45,13 +45,13 @@ public class SignInAction extends ActionSupport {
            userId = helper.injectionReplace(userId);
            password = helper.hashPassword(password);
        }
-    }
+    }*/
     public String execute() {
         
         String query = "SELECT password FROM users WHERE userId='" +
                    userId + "'";
         DBQueryHandler handler = new DBQueryHandler();
-        ActionHelper helper = new ActionHelper();
+        // ActionHelper helper = new ActionHelper();
         String userPassword = "";
    
         try {
