@@ -21,6 +21,5 @@
         <h4>bio: <s:property value="bio"/></h4>
         <h4>question: <s:property value="secretQuestion"/></h4>
         <h4>answer: <s:property value="secretAnswer"/></h4>
-        <h4>questionNum: <s:property value="
     </body>
 </html>

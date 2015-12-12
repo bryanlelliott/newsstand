@@ -47,10 +47,17 @@ public class DBUpdate {
           */ 
         // if creating new account
 
-        String command = "INSERT INTO users VALUES ("
-                + userId + ", " + realName + ", " + bio +
-                ", " + email + ", " + password + ", " +
-                userType + "," + secretQuestion + "," + secretAnswer + ");";
+//        String command = "INSERT INTO users (userID, userRealName, userBio, userEmail, "
+//                  + "userPassword, userType, userRecoveryQuestionID, userRecoveryAnswer) "
+//                + "VALUES (\"userid\", \"realname\", \"bio\", \"email\",\"password\", \"user\", 1, \"answer\");";
+//        
+//                INSERT INTO users (userID, userRealName, userBio, userEmail, userPassword, userType, userRecoveryQuestionID, userRecoveryAnswer) VALUES ("userid", "realname\", "bio\", "email\",\"password\", \"user\", 1, \"answer\");
+//                
+               String command = "INSERT INTO users (userID, userRealName, userBio, userEmail, "
+                + "userPassword, userType, userRecoveryQuestionID, userRecoveryAnswer) "
+                + "VALUES (\'" + userId + "\', \'" + realName + "\', \'" + bio +
+                "\', \'" + email + "\', \'" + password + "\', \'" +
+                userType + "\', \'" + secretQuestion + "\', \'" + secretAnswer + "\');";
 
         try {
             int resultCount = dbComHand.doCommand(command);

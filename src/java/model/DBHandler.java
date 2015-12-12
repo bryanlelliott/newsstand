@@ -18,7 +18,7 @@ public abstract class DBHandler {
     /** Database access credentials */
     protected String driverName = "com.mysql.jdbc.Driver";
     protected String url = "jdbc:mysql://us-cdbr-azure-southcentral-e.cloudapp.net/newsstand"; 
-    protected String userId = "ba7e286a39aae9e"; 
+    protected String userId = "ba7e286a39ae9e"; 
     protected String password = "d89b6d9b";
     /** Database connection */
     private Connection con;
@@ -31,18 +31,14 @@ public abstract class DBHandler {
      * Get parameters required to open DBMS connection.
      */
     public DBHandler() {
-        // Get DB access credentials from web.xml
-        try {
-            Context envCtx = (Context) (new InitialContext())
-                    .lookup("java:comp/env");
-            driverName = (String) envCtx.lookup("DriverClassName");
-            url = (String) envCtx.lookup("Url");
-            userId = (String) envCtx.lookup("UserId");
-            password = (String) envCtx.lookup("Password");
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
-    }
+        driverName = "com.mysql.jdbc.Driver";
+        url = "jdbc:mysql://us-cdbr-azure-southcentral-e.cloudapp.net/newsstand";
+        userId = (String) "ba7e286a39ae9e";
+        password = (String) "d89b6d9b";
+         
+    }        
+           
+    
 
     /**
      * Open the DB connection
