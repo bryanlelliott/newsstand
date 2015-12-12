@@ -24,6 +24,7 @@ public class SignUpAction extends ActionSupport {
     private String email;
     // private String userType = "Regular";
     private String secretQuestion;
+    private int questionNum;
     private String secretAnswer;
     
     DBQueryHandler handler = new DBQueryHandler();
@@ -100,18 +101,30 @@ public class SignUpAction extends ActionSupport {
     } */
     
     public String execute() {
-        //DBUpdate updater = new DBUpdate();
+        DBUpdate updater = new DBUpdate();
         
-        /*if (updater.insertUser(userId, password, email, realName, bio, secretQuestion, secretAnswer, "Regular"))
-            return SUCCESS;
-        else
-            return ERROR;*/
+        if (secretQuestion.equals("What is the name of your childhood best friend?"))
+            questionNum = 1;
+        if (secretQuestion.equals("What city were you born in?"))
+            questionNum = 2;
+        if (secretQuestion.equals("What is the name of your first pet?"))
+            questionNum = 3;
+        if (secretQuestion.equals("What is your favorite color?"))
+            questionNum = 4;
+        if (secretQuestion.equals("Who is your favorite celebrity?"))
+            questionNum = 5;
         if (password.equals(confirmPassword))
-            return SUCCESS;
+        {
+            
+        }
         else {
             addFieldError("confirmPassword", "The passwords must be matching");
             return INPUT;
         }
+        if (updater.insertUser(userId, password, email, realName, bio, questionNum, secretAnswer, "Regular"))
+            return SUCCESS;
+        else
+            return ERROR;
     }
     
     public String getUserId() {
