@@ -11,7 +11,6 @@ package model;
  */
 public class ArticleBox {
     String articleName;
-    String sentence;
     double rating;
     String genre;
     
@@ -21,14 +20,6 @@ public class ArticleBox {
 
     public String getArray() {
         return articleName;
-    }
-    
-    public void setSentence(String sentence) {
-        this.sentence = sentence;
-    }
-
-    public String getSentence() {
-        return sentence;
     }
     
     public void setRating(double rating) {

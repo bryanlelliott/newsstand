@@ -35,7 +35,7 @@
     <![endif]-->
 
 <style>
-        #register-form > div {
+        #register-form > div, #login-form > div {
             margin-bottom:15px;
             text-align:center;
         }
