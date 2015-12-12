@@ -12,7 +12,7 @@
         </action>
         <action name="signin" class="model.SignInAction">
             <result name="success">browse.jsp</result>
-            <result name="input">signin.jsp</result>
+            <result name="input">login.jsp</result>
         </action>
         <action name="lostpassword" class="model.LostPasswordAction">
             <result name="success">login.jsp</result>

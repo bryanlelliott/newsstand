@@ -20,7 +20,7 @@ public class SignInAction extends ActionSupport {
     // perhaps use userType     
     private String userType = "Regular";
 
-    public void validate() {
+    /*public void validate() {
     ActionHelper helper = new ActionHelper();
     DBQueryHandler handler = new DBQueryHandler();
     
@@ -48,13 +48,13 @@ public class SignInAction extends ActionSupport {
            String query = "SELECT userId FROM users WHERE userId='" +
                    userId + "'";
        }
-    }
+    }*/
     public String execute() {
         
         String query = "SELECT password FROM users WHERE userId='" +
                    userId + "'";
         DBQueryHandler handler = new DBQueryHandler();
-        ActionHelper helper = new ActionHelper();
+        // ActionHelper helper = new ActionHelper();
         String userPassword = "";
    
         try {
@@ -68,7 +68,7 @@ public class SignInAction extends ActionSupport {
         {
             e.printStackTrace();
         }
-        if( helper.hashPassword(password).equals(userPassword) )
+        if( password.equals(userPassword) )
         {
             loggedIn = true;
             return SUCCESS;
