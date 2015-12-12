@@ -83,4 +83,18 @@ public class DBQueryProcessor {
 
     }
     
+    private ResultSet getUser(String userId, String password){
+        
+        String query = "SELECT * FROM users WHERE userid = \'" + userId 
+                + "AND userPassword = \'" + password;
+        
+        try {
+            return dbqh.doQuery(query);
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return null;
+        }
+
+    }
+    
 }

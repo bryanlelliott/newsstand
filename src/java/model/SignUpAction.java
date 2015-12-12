@@ -20,10 +20,15 @@ public class SignUpAction extends ActionSupport {
     //private boolean submitted;    
     //private boolean loggedIn;
     private String realName;
-    private String bio;
+    private String bio = "This user has not created a bio yet.";
     private String email;
     // private String userType = "Regular";
+<<<<<<< HEAD
     //private int secretQuestion;
+=======
+    private String secretQuestion;
+    private int questionNum;
+>>>>>>> 99c96dbc6413875f71cacb64828a003c7d0202c7
     private String secretAnswer;
     
     DBQueryHandler handler = new DBQueryHandler();
@@ -44,49 +49,50 @@ public class SignUpAction extends ActionSupport {
                response.sendRedirect("/login.jsp"); }
     %> */  
     
-    public void validate() {
-        ActionHelper helper = new ActionHelper();
+    /*public void validate() {
+        // ActionHelper helper = new ActionHelper();
         
-        if( userId.length() == 0 || userId == null )
+        if( userId == null )
         {
             addFieldError("userId", "This field cannot be blank.");
         }
-        else if( password.length() == 0 || password == null )
+        if( password == null )
         {
             addFieldError("password", "This field cannot be blank.");
         }
-        else if( realName.length() == 0 || realName == null )
+        if( realName == null )
         {
             addFieldError("realName", "This field cannot be blank.");
         }
-        else if( email.length() == 0 || email == null )
+        if( email == null )
         {
             addFieldError("email", "This field cannot be blank.");
         }
-        else if( userId.length() > 16 )
+        if( userId.length() > 16 )
         {
             addFieldError("userId", "This field cannot be longer than 16 characters.");
         }
-        else if( password.length() > 20 )
+        if( password.length() > 20 )
         {
             addFieldError("password", "This field cannot be longer than 20 characters.");
         }
-        else if( realName.length() > 50 )
+        if( realName.length() > 50 )
         {
             addFieldError("realName", "This field cannot be longer than 50 characters.");
         }
-        else if( email.length() > 50 )
+        if( email.length() > 50 )
         {
             addFieldError("email", "This field cannot be longer than 50 characters.");
         }
-        else if( bio.length() > 1000 )
+        if( bio.length() > 1000 )
         {
             addFieldError("bio", "This field cannot be longer than 1000 characters.");
         }
-        else if( secretAnswer.length() > 500 )
+        if( secretAnswer.length() > 500 )
         {
             addFieldError("secretAnswer", "This field cannot be longer than 500 characters.");
         }
+        
         else
         {
             userId = helper.injectionReplace(userId);
@@ -96,19 +102,37 @@ public class SignUpAction extends ActionSupport {
             email = helper.injectionReplace(email);
             secretAnswer = helper.injectionReplace(secretAnswer);
         }
-    }
+    } */
     
     public String execute() {
         DBUpdate updater = new DBUpdate();
         
+<<<<<<< HEAD
         if( updater.insertUser(userId, password, email, realName, bio, 2, secretAnswer, "Regular") )
+=======
+        if (secretQuestion.equals("What is the name of your childhood best friend?"))
+            questionNum = 1;
+        if (secretQuestion.equals("What city were you born in?"))
+            questionNum = 2;
+        if (secretQuestion.equals("What is the name of your first pet?"))
+            questionNum = 3;
+        if (secretQuestion.equals("What is your favorite color?"))
+            questionNum = 4;
+        if (secretQuestion.equals("Who is your favorite celebrity?"))
+            questionNum = 5;
+        if (password.equals(confirmPassword))
+>>>>>>> 99c96dbc6413875f71cacb64828a003c7d0202c7
         {
-            return SUCCESS;
+            
         }
-        else
-        {
+        else {
+            addFieldError("confirmPassword", "The passwords must be matching");
             return INPUT;
         }
+        if (updater.insertUser(userId, password, email, realName, bio, questionNum, secretAnswer, "Regular"))
+            return SUCCESS;
+        else
+            return ERROR;
     }
     
     public String getUserId() {
@@ -160,11 +184,15 @@ public class SignUpAction extends ActionSupport {
         this.email = email;
     }
     
+<<<<<<< HEAD
     /*public int getSecretQuestion() {
+=======
+    public String getSecretQuestion() {
+>>>>>>> 99c96dbc6413875f71cacb64828a003c7d0202c7
         return secretQuestion;
     }
     
-    public void setSecretQuestion(int secretQuestion) {
+    public void setSecretQuestion(String secretQuestion) {
         this.secretQuestion = secretQuestion;
     }*/
     
