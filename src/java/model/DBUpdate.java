@@ -21,43 +21,12 @@ public class DBUpdate {
     public boolean insertUser(String userId, String password, 
         String email,String realName, String bio, int secretQuestion,
             String secretAnswer, String userType) {
-
-        // if logging in 
-        /*query = "SELECT * FROM users WHERE userID = '" + userId 
-                + "' AND password = '" + password + "'";
-
-
-        try {
-            handler.doQuery(query);
-        }
-        catch(SQLException SQLE)
-        {
-            SQLE.printStackTrace();
-        }
-
-        // compare the result 
-        // if the query returns null, then there is not a match.
-           if (result == null) {
-            // redirect to login.jsp because the password didnt work.
-           }
-           else if (result != null) {
-               execute();
-           }
-
-          */ 
-        // if creating new account
-
-//        String command = "INSERT INTO users (userID, userRealName, userBio, userEmail, "
-//                  + "userPassword, userType, userRecoveryQuestionID, userRecoveryAnswer) "
-//                + "VALUES (\"userid\", \"realname\", \"bio\", \"email\",\"password\", \"user\", 1, \"answer\");";
-//        
-//                INSERT INTO users (userID, userRealName, userBio, userEmail, userPassword, userType, userRecoveryQuestionID, userRecoveryAnswer) VALUES ("userid", "realname\", "bio\", "email\",\"password\", \"user\", 1, \"answer\");
-//                
-               String command = "INSERT INTO users (userID, userRealName, userBio, userEmail, "
-                + "userPassword, userType, userRecoveryQuestionID, userRecoveryAnswer) "
-                + "VALUES (\'" + userId + "\', \'" + realName + "\', \'" + bio +
-                "\', \'" + email + "\', \'" + password + "\', \'" +
-                userType + "\', \'" + secretQuestion + "\', \'" + secretAnswer + "\');";
+           
+        String command = "INSERT INTO users (userID, userRealName, userBio, userEmail, "
+         + "userPassword, userType, userRecoveryQuestionID, userRecoveryAnswer) "
+         + "VALUES (\'" + userId + "\', \'" + realName + "\', \'" + bio +
+         "\', \'" + email + "\', \'" + password + "\', \'" +
+         userType + "\', \'" + secretQuestion + "\', \'" + secretAnswer + "\');";
 
         try {
             int resultCount = dbComHand.doCommand(command);
@@ -71,7 +40,7 @@ public class DBUpdate {
     }
 
     public boolean insertArticle(int articleId, String url, 
-         String authorName, int providerId, String title, Date addDate, String category) {
+         String authorName, int providerName, String title, Date addDate, String category) {
         
         int authorId = 0;
         
@@ -91,9 +60,9 @@ public class DBUpdate {
         }
         
         String command = "INSERT INTO articles VALUES ("
-                + articleId + ", " + url + ", " + authorId +
-                ", " + providerId + ", " + title + ", " +
-                addDate + "," + category + ");";
+                + articleId + ", \'" + url + "\', \'" + authorId +
+                "\', \'" + providerName + "\', \'" + title + "\', \'" +
+                addDate + "\',\'" + category + "\');";
 
         try {
             int resultCount = dbComHand.doCommand(command);
@@ -108,9 +77,9 @@ public class DBUpdate {
     public boolean insertRating(int ratingId, String userId,
         int articleId, int ratingValue, String ratingText, Date ratingDate) {
         String command = "INSERT INTO ratings VALUES ("
-            + ratingId + ", " + userId + ", " + articleId +
-            ", " + ratingValue + ", " + ratingText + ", " +
-            ratingDate + ");";
+            + ratingId + ", \'" + userId + "\'," + articleId +
+            ", " + ratingValue + ", \'" + ratingText + "\', \'" +
+            ratingDate + "\');";
 
         try {
             int resultCount = dbComHand.doCommand(command);
@@ -124,7 +93,7 @@ public class DBUpdate {
 
     public boolean insertProvider(int providerId, String providerName){
         String command = "INSERT INTO ratings VALUES ("
-            + providerId + ", " + providerName + ");";
+            + providerId + ", \'" + providerName + "\');";
 
         try {
             int resultCount = dbComHand.doCommand(command);
@@ -138,7 +107,7 @@ public class DBUpdate {
     
     public boolean insertAuthor(int authorId, String authorName){
         String command = "INSERT INTO authors VALUES ("
-            + authorId + ", " + authorName + ");";
+            + authorId + ", \'" + authorName + "\');";
 
         try {
             int resultCount = dbComHand.doCommand(command);
@@ -151,7 +120,7 @@ public class DBUpdate {
     }
 
     public boolean deleteAccount(String userId){
-        String command = "DELETE FROM users WHERE userID = " + userId + ";";
+        String command = "DELETE FROM users WHERE userID = \'" + userId + "\';";
 
         try {
             int resultCount = dbComHand.doCommand(command);
@@ -179,10 +148,10 @@ public class DBUpdate {
     public boolean updateUser(String userId, String password, 
         String email,String realName, String bio){
         
-        String command = "UPDATE TABLE users SET userEmail = "
-                + email + ", userRealName = "
-                + realName + ", userBio = " 
-                + bio + " WHERE userID = " + userId + ";";
+        String command = "UPDATE TABLE users SET userEmail = \'"
+                + email + "\', userRealName = \'"
+                + realName + "\', userBio = \'" 
+                + bio + "\' WHERE userID = \'" + userId + "\';";
 
         try {
             int resultCount = dbComHand.doCommand(command);
@@ -197,12 +166,12 @@ public class DBUpdate {
     public boolean updateUser(String userId, String password, String oldPassword,
         String email,String realName, String bio){
         
-        String command = "UPDATE TABLE users SET userPassword = "
-                + password + ", userEmail = "
-                + email + ", userRealName = "
-                + realName + ", userBio = " 
-                + bio + " WHERE userID = " + userId 
-                + " AND userPassword = " + oldPassword + ";";
+        String command = "UPDATE TABLE users SET userPassword = \'"
+                + password + "\', userEmail = \'"
+                + email + "\', userRealName = \'"
+                + realName + "\', userBio = \'" 
+                + bio + "\' WHERE userID = \'" + userId 
+                + "\' AND userPassword = \'" + oldPassword + "\';";
 
         try {
             int resultCount = dbComHand.doCommand(command);
@@ -219,9 +188,9 @@ public class DBUpdate {
         int articleCategoryId = 0;
         
         String command = "INSERT INTO articleCategories VALUES ("
-                + articleCategoryId + ", "
-                + articleId + ", "
-                + category + ");";
+                + articleCategoryId + ", \'"
+                + articleId + "\', \'"
+                + category + "\');";
 
         try {
             int resultCount = dbComHand.doCommand(command);
@@ -284,7 +253,7 @@ public class DBUpdate {
         
         try {
             ResultSet rs = dbqh.doQuery("SELECT authorName FROM authors "
-                + "WHERE authorName = " + authorName + ";");
+                + "WHERE authorName = \'" + authorName + "\';");
             if (rs != null) {
                 return true;
             }
