@@ -40,7 +40,7 @@ public class DBUpdate {
     }
 
     public boolean insertArticle(int articleId, String url, 
-         String authorName, int providerName, String title, Date addDate, String category) {
+         String authorName, String providerName, String title, Date addDate, String category) {
         
         int authorId = 0;
         

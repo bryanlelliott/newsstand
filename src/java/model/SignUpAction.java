@@ -23,12 +23,9 @@ public class SignUpAction extends ActionSupport {
     private String bio = "This user has not created a bio yet.";
     private String email;
     // private String userType = "Regular";
-<<<<<<< HEAD
-    //private int secretQuestion;
-=======
+
     private String secretQuestion;
     private int questionNum;
->>>>>>> 99c96dbc6413875f71cacb64828a003c7d0202c7
     private String secretAnswer;
     
     DBQueryHandler handler = new DBQueryHandler();
@@ -107,9 +104,7 @@ public class SignUpAction extends ActionSupport {
     public String execute() {
         DBUpdate updater = new DBUpdate();
         
-<<<<<<< HEAD
-        if( updater.insertUser(userId, password, email, realName, bio, 2, secretAnswer, "Regular") )
-=======
+ 
         if (secretQuestion.equals("What is the name of your childhood best friend?"))
             questionNum = 1;
         if (secretQuestion.equals("What city were you born in?"))
@@ -121,7 +116,6 @@ public class SignUpAction extends ActionSupport {
         if (secretQuestion.equals("Who is your favorite celebrity?"))
             questionNum = 5;
         if (password.equals(confirmPassword))
->>>>>>> 99c96dbc6413875f71cacb64828a003c7d0202c7
         {
             
         }
@@ -184,17 +178,14 @@ public class SignUpAction extends ActionSupport {
         this.email = email;
     }
     
-<<<<<<< HEAD
-    /*public int getSecretQuestion() {
-=======
+
     public String getSecretQuestion() {
->>>>>>> 99c96dbc6413875f71cacb64828a003c7d0202c7
         return secretQuestion;
     }
     
     public void setSecretQuestion(String secretQuestion) {
         this.secretQuestion = secretQuestion;
-    }*/
+    }
     
     public String getSecretAnswer() {
         return secretAnswer;
