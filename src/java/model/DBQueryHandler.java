@@ -23,7 +23,9 @@ public class DBQueryHandler extends DBHandler implements Serializable {
             open();
         }
         ResultSet rs = stmt.executeQuery(query);
-        close();
+        // ResultSet was closing before we can retrieve data, moved close to a DBQueryprocessor function
+        // called from the action following use of ResultSet
+        // close();                                 
         return rs;
     }
 }

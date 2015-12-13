@@ -5,9 +5,11 @@
  */
 package model;
 import static com.opensymphony.xwork2.Action.SUCCESS;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 /**
  *
  * @author katie
@@ -15,6 +17,7 @@ import java.sql.SQLException;
 public class SignInAction extends ActionSupport {
     private String userId;    
     private String password; 
+    private String realName;
     private boolean loggedIn;
 
     public void validate() {
@@ -47,24 +50,26 @@ public class SignInAction extends ActionSupport {
         String ret = INPUT;
         DBQueryProcessor processor = new DBQueryProcessor();
         ActionHelper helper = new ActionHelper();
+        Map session = (Map) ActionContext.getContext().get("session");
    
         try {
             ResultSet rs = processor.getUser(userId, password);
-            if( rs != null || rs.next() )
+            
+            if(rs.next())
             {
-                loggedIn = true;
+                realName = rs.getString(2);
+                session.put("loggedIn", true);
+                session.put("userId", userId);
+                session.put("realName", realName);
+                processor.endQuery();
+                rs.close();
                 ret = SUCCESS;
-            }
-            else
-            {
-                ret = INPUT;
             }
         } catch( SQLException e ) {
             e.printStackTrace();
-            loggedIn = false;
+            session.put("loggedIn", false);
             ret = INPUT;
         }
-        
         return ret;
     }
     
@@ -90,5 +95,13 @@ public class SignInAction extends ActionSupport {
     
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
+    }
+    
+    public String getRealName() {
+        return realName;
+    }
+    
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 }

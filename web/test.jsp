@@ -13,6 +13,17 @@
         <title>Test Page</title>
     </head>
     <body>
+        <% 
+            try {
+                boolean loggedIn = (boolean)session.getAttribute("loggedIn");
+                String realName = (String)session.getAttribute("realName");
+                out.println(realName + " is logged in");
+            } catch (Exception jsp){
+                out.println("User is not logged in");
+                
+            }
+        %>
+        
         <h4>username: <s:property value="userId"/></h4>
         <h4>name: <s:property value="realName"/></h4>
         <h4>password: <s:property value="password"/></h4>
