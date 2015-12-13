@@ -51,7 +51,8 @@ public class DBUpdate {
         else {
             try {
                 ResultSet authorResult = dbqh.doQuery("SELECT authorID FROM authors "
-                    + "WHERE authorName = " + authorName + ";");
+                    + "WHERE authorName =\'" + authorName + "\';");
+                authorId = authorResult.getInt("authorId");
                 
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -60,7 +61,7 @@ public class DBUpdate {
         }
         
         String command = "INSERT INTO articles VALUES ("
-                + articleId + ", \'" + url + "\', \'" + authorId +
+                + articleId + ", \'" + url + "\', " + authorId +
                 "\', \'" + providerName + "\', \'" + title + "\', \'" +
                 addDate + "\',\'" + category + "\');";
 
