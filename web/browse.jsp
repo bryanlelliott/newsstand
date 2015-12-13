@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<s:set name="theme" value="'css_xhtml'" scope="page" />
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -163,7 +165,7 @@
           </li>
           <!-- End modal code -->
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color:black; color:white"><h5><span class="glyphicon glyphicon-user"></span> Madison <span class="badge">2</span><span class="caret"></span></h5></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color:black; color:white"><h5><s:property value="userId"/><span class="caret"></span></h5></a>
           <ul class="dropdown-menu">
             <li><a href="profile.jsp">Profile</a></li>
             <li><a href="admin.jsp">Admin Panel</a></li>
