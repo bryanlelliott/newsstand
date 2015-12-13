@@ -17,11 +17,11 @@ public class SignInAction extends ActionSupport {
     private String password; 
     private boolean loggedIn;
 
-    /*public void validate() {
+    public void validate() {
     ActionHelper helper = new ActionHelper();
     DBQueryHandler handler = new DBQueryHandler();
     
-    if( userId.length() == 0 || userId == null )
+       if( userId.length() == 0 || userId == null )
        {
            addFieldError("userId", "This field cannot be blank.");
        }
@@ -42,37 +42,29 @@ public class SignInAction extends ActionSupport {
            userId = helper.injectionReplace(userId);
            password = helper.hashPassword(password);
        }
-    }*/
+    }
     public String execute() {
         String ret = INPUT;
-        /*String query = "SELECT password FROM users WHERE userId='" +
-                   userId + "'";*/
         DBQueryProcessor processor = new DBQueryProcessor();
-        // ActionHelper helper = new ActionHelper();
+        ActionHelper helper = new ActionHelper();
    
-        /*try {
+        try {
             ResultSet rs = processor.getUser(userId, password);
-            if( rs != null)
+            if( rs != null || rs.next() )
             {
                 loggedIn = true;
                 ret = SUCCESS;
             }
-        } catch( NullPointerException npe ) {
-            npe.printStackTrace();
+            else
+            {
+                ret = INPUT;
+            }
+        } catch( SQLException e ) {
+            e.printStackTrace();
             loggedIn = false;
             ret = INPUT;
-        }*/
-        ResultSet rs = processor.getUser(userId, password);
-        try {
-            while (rs.next()) {
-                userId = rs.getString(1);
-                ret = SUCCESS;
-             }
-        } catch(Exception ex)
-        {
-            ex.printStackTrace();
-            ret = ERROR;
         }
+        
         return ret;
     }
     
