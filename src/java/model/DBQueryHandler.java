@@ -23,6 +23,7 @@ public class DBQueryHandler extends DBHandler implements Serializable {
             open();
         }
         ResultSet rs = stmt.executeQuery(query);
+        close();
         return rs;
     }
 }

@@ -17,7 +17,7 @@ public class DBQueryProcessor {
     DBQueryHandler dbqh = new DBQueryHandler();
 
     public ResultSet getAuthor(String authorName){
-        String query = "SELECT * FROM authors WHERE authorName = " + authorName + ";";
+        String query = "SELECT * FROM authors WHERE authorName =\'" + authorName + "\';";
         
         try {
             return dbqh.doQuery(query);
