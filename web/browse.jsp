@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <s:set name="theme" value="'simple'" scope="page" />
+<jsp:include page="loginTest.jsp"/>
 <!DOCTYPE html>
 <html lang="en">
   <head>
