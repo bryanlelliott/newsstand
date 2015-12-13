@@ -119,11 +119,29 @@ hr {
 
           </li>
           <!-- End modal code -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color:black; color:white"><h5><span class="glyphicon glyphicon-user"></span> Madison <span class="badge">2</span><span class="caret"></span></h5></a>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color:black; color:white">
+              <h5>
+                  <%
+            try {
+               String realName = (String)session.getAttribute("realName");
+               out.println(realName);
+             } catch (Exception jsp){
+                out.println("NULL");
+            }
+    %><span class="caret"></span>
+              </h5></a>
           <ul class="dropdown-menu">
             <li><a href="profile.jsp">Profile</a></li>
-            <li><a href="admin.jsp">Admin Panel</a></li>
+            <%
+            try {
+               String userType = (String) session.getAttribute("userType");
+               if (userType.equals("admin"))
+                  out.println("<li><a href=\"admin.jsp\">Admin Panel</a></li>");
+             } catch (Exception jsp){
+                out.println("User is not logged in");
+            }
+            %>
             <li role="separator" class="divider"></li>
             <li><a href="index.jsp">Logout</a></li>
           </ul>
