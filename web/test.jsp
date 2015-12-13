@@ -17,7 +17,9 @@
             try {
                 boolean loggedIn = (boolean)session.getAttribute("loggedIn");
                 String realName = (String)session.getAttribute("realName");
+                String userType = (String)session.getAttribute("userType");
                 out.println(realName + " is logged in");
+                out.println("as a " + userType + " user.");
             } catch (Exception jsp){
                 out.println("User is not logged in");
                 
@@ -32,5 +34,7 @@
         <h4>bio: <s:property value="bio"/></h4>
         <h4>question: <s:property value="secretQuestion"/></h4>
         <h4>answer: <s:property value="secretAnswer"/></h4>
+        <hr>
+        <a href="browse.jsp">Go to Browse</a>
     </body>
 </html>

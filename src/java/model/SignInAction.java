@@ -18,6 +18,7 @@ public class SignInAction extends ActionSupport {
     private String userId;    
     private String password; 
     private String realName;
+    private String userType;
     private boolean loggedIn;
 
     public void validate() {
@@ -58,9 +59,11 @@ public class SignInAction extends ActionSupport {
             if(rs.next())
             {
                 realName = rs.getString(2);
+                userType = rs.getString(8);
                 session.put("loggedIn", true);
                 session.put("userId", userId);
                 session.put("realName", realName);
+                session.put("userType", userType);
                 processor.endQuery();
                 rs.close();
                 ret = SUCCESS;
@@ -103,5 +106,13 @@ public class SignInAction extends ActionSupport {
     
     public void setRealName(String realName) {
         this.realName = realName;
+    }
+    
+    public String getUserType() {
+        return userType;
+    }
+    
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }
