@@ -143,7 +143,7 @@ hr {
             }
             %>
             <li role="separator" class="divider"></li>
-            <li><a href="index.jsp">Logout</a></li>
+            <li><a href="logout.jsp">Logout</a></li>
           </ul>
         </li>
       </ul>
