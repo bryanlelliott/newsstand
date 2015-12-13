@@ -128,7 +128,7 @@
             <li><a href="profile.jsp">Profile</a></li>
             <li><a href="admin.jsp">Admin Panel</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="index.jsp">Logout</a></li>
+            <li><a href="logout.jsp">Logout</a></li>
           </ul>
         </li>
       </ul>

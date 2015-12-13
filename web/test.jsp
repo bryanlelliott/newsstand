@@ -21,8 +21,7 @@
                 out.println(realName + " is logged in");
                 out.println("as a " + userType + " user.");
             } catch (Exception jsp){
-                out.println("User is not logged in");
-                
+                out.println("User is not logged in");   
             }
         %>
         
