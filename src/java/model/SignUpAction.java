@@ -127,7 +127,7 @@ public class SignUpAction extends ActionSupport {
     public String execute() {
         DBUpdate updater = new DBUpdate();
         DBQueryHandler dbqh = new DBQueryHandler();
-        String query = "SELECT userId FROM users WHERE userId=\'" + userId + "\'";
+        String query = "SELECT userId FROM users WHERE userId=\'" + userId + "\';";
         boolean found = false;
         
         try {
@@ -135,6 +135,7 @@ public class SignUpAction extends ActionSupport {
             if( rs.next() )
             {
                 found = true;
+                addFieldError("userId", "This means the query is working.");
             }
             else
             {
@@ -144,8 +145,9 @@ public class SignUpAction extends ActionSupport {
         catch( SQLException e )
         {
             e.printStackTrace();
+            addFieldError("userId", "This means the query isn't working.");
         }
-        if (!found && updater.insertUser(userId, password, email, realName, bio, questionNum, secretAnswer, "Regular"))
+        if (updater.insertUser(userId, password, email, realName, bio, questionNum, secretAnswer, "Regular"))
         {
             return SUCCESS;
         }

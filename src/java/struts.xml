@@ -5,7 +5,7 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        <action name="signup" class="model.SignUpAction" method="execute">
+        <action name="signup" class="model.SignUpAction">
             <result name="success">test.jsp</result>
             <result name="input">signup.jsp</result>
             <result name="error">article.jsp</result>
