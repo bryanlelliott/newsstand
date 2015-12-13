@@ -124,7 +124,7 @@ public class SignUpAction extends ActionSupport {
         }
     } 
     
-    public String execute() {
+    public String execute() throws SQLException {
         DBUpdate updater = new DBUpdate();
         DBQueryHandler dbqh = new DBQueryHandler();
         String query = "SELECT userId FROM users WHERE userId=\'" + userId + "\';";
@@ -149,6 +149,7 @@ public class SignUpAction extends ActionSupport {
         }
         if (updater.insertUser(userId, password, email, realName, bio, questionNum, secretAnswer, "Regular"))
         {
+            dbqh.close();       // added
             return SUCCESS;
         }
         else
