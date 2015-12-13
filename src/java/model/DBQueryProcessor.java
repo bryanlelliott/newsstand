@@ -87,13 +87,20 @@ public class DBQueryProcessor {
         
         String query = "SELECT * FROM users WHERE userID = \'" + userId 
                 + "\' AND userPassword = \'" + password + "\'";
-        
+        System.out.println("test: " + query);
         try {
             return dbqh.doQuery(query);
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             return null;
         }
+
+    }
+    
+    // Francis added this
+    public void endQuery() throws SQLException {
+        
+        dbqh.close();
 
     }
     
