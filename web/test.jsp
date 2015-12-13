@@ -17,7 +17,9 @@
             try {
                 boolean loggedIn = (boolean)session.getAttribute("loggedIn");
                 String realName = (String)session.getAttribute("realName");
+                String userType = (String)session.getAttribute("userType");
                 out.println(realName + " is logged in");
+                out.println("as a " + userType + " user.");
             } catch (Exception jsp){
                 out.println("User is not logged in");
                 

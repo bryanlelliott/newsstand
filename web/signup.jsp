@@ -70,7 +70,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<s:form id="login-form" action="signin" method="post" role="form" style="display: block;">
+								<s:form id="login-form" action="signin" method="post" role="form" style="display: none;">
                                                                         <s:textfield name="userId" placeholder="Username" class="form-group"/>
                                                                         <s:password name="password" placeholder="Password"/>
                                                                         <s:submit value="submit" />

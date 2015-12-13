@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<s:set name="theme" value="'css_xhtml'" scope="page" />
+<s:set name="theme" value="'simple'" scope="page" />
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -107,57 +107,18 @@
 
                         <!-- Modal Body -->
                         <div class="modal-body">
-
-                            <form role="form">
-                              <div class="form-group">
-                                <label for="addArticleUrl">URL</label>
-                                  <input type="text" class="form-control"
-                                  id="addArticleUrl" placeholder="Enter the Article URL"/>
-                              </div>
-                              <div class="form-group">
-                                <label for="addArticleTitle">Title</label>
-                                  <input type="text" class="form-control"
-                                      id="addArticleTitle" placeholder="Article Title"/>
-                              </div>
-                              <div class="form-group">
-                                <label for="addArticleAuthor">Author</label>
-                                  <input type="text" class="form-control"
-                                      id="addArticleAuthor" placeholder="Author, ex. John Smith"/>
-                              </div>
-                              <div class="form-group">
-                                <label for="addArticleProvider">Provider</label>
-                                  <input type="text" class="form-control"
-                                      id="addArticleTitle" placeholder="Provider, ex. CNN"/>
-                              </div>
-                              <div class="form-group">
-                                <label for="addArticleDate">Publication Date</label>
-                                  <input type="date" class="form-control"
-                                      id="addArticleDate" placeholder="Published Date"/>
-                              </div>
-                              <div class="form-group">
-                                <label for="addArticleGenre">Article Genre</label>
-                                <select class="form-control" id="addArticleGenre" name="genre">
-                                  <option>World</option>
-                                  <option>US</option>
-                                  <option>Politics</option>
-                                  <option>Entertainment</option>
-                                  <option>Sports</option>
-                                  <option>Tech</option>
-                                  <option>Money</option>
-                                  <option>Science</option>
-                                  <option>Travel</option>
-                                  <option>Living</option>
-                                  <option>Other</option>
-                                </select>
-                              </div>
-                              <div class="text-center">
-                              <button type="submit" class="btn btn-success">Submit</button>
-                              </div>
-                            </form>
-
-
+                            <s:bean name="model.GenreList">
+                            <s:form id="article-form" action="addArticle" method="post" role="form" style="display: block;">
+                                <div class="form-group"><label for="addArticleUrl">URL</label><s:textfield name="addArticleUrl" placeholder="Username" cssClass="form-control"/></div>
+                                <div class="form-group"><label for="addArticleTitle">Title</label><s:textfield name="addArticleTitle" placeholder="Password" cssClass="form-control"/></div>
+                                <div class="form-group"><label for="addArticleAuthor">Author</label><s:textfield name="addArticleAuthor" placeholder="Author, ex. John Smith" cssClass="form-control"/></div>
+                                <div class="form-group"><label for="addArticleProvider">Provider</label><s:textfield name="addArticleProvider" placeholder="Provider, ex. CNN" cssClass="form-control"/></div>
+                                <div class="form-group"><label for="addArticleDate">Publication Date</label><s:textfield name="addArticleDate" placeholder="MM/DD/YYYY" cssClass="form-control"/></div>
+                                <div class="form-group"><label for="addArticleGenre">Article Genre</label><s:select name="addGenre" list="array" cssClass="form-control"/></div>
+                                <div class="text-center"><s:submit cssClass="btn btn-success" value="Submit" /></div>
+                            </s:form>
+                            </s:bean>
                         </div>
-
                     </div>
                 </div>
             </div>
