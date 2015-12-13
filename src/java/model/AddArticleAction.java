@@ -90,6 +90,10 @@ public class AddArticleAction extends ActionSupport {
         {
             addFieldError("url", "This field cannot be left blank.");
         }
+        else if( !url.startsWith("http") || !url.startsWith("www") )
+        {
+            addFieldError("url", "Please copy and paste a real URL.");
+        }
         else if( title.length() == 0 || title == null )
         {
             addFieldError("title", "This field cannot be blank.");
@@ -113,7 +117,13 @@ public class AddArticleAction extends ActionSupport {
     public String execute(){
         DBUpdate dbu = new DBUpdate();
         articleId = dbu.generateID("ART");
-        dbu.insertArticle(articleId, url, authorName, providerName, title, addDate, category);
-        return SUCCESS;
+        if( dbu.insertArticle(articleId, url, authorName, providerName, title, addDate, category) )
+        {
+            return SUCCESS;
+        }
+        else
+        {
+            return INPUT;
+        }
     }
 }
