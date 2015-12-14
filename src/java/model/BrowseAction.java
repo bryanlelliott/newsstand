@@ -8,11 +8,16 @@ package model;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import model.ArticleBox;
 /**
- *
+ * BrowseAction is the action class for browse.jsp.
  * @author francis
  */
 public class BrowseAction {
     ArticleBox boxes[] = new ArticleBox[9];
+     /*
+     * execute() method goes to dbupdate.java to either return success or input.
+     * @return String SUCCESS
+     * 
+     */
     public String execute() {
         
         return SUCCESS;

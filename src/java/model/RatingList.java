@@ -6,7 +6,7 @@
 package model;
 
 /**
- *
+ * RatingList is the list of ratings used.
  * @author francis
  */
 public class RatingList {
@@ -18,10 +18,20 @@ public class RatingList {
         "5"
     };
 
+    /********
+     * Setter for String[] array.
+     * @param String[] array
+     * 
+     */
     public void setArray(String[] array) {
         this.array = array;
     }
 
+    /********
+     * Getter for String[] array.
+     * 
+     * @return String[] userId
+     */
     public String[] getArray() {
         return array;
     }

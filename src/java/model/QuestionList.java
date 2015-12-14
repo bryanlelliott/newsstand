@@ -6,7 +6,7 @@
 package model;
 
 /**
- *
+ * QuestionList is the list of questions used.
  * @author francis
  */
 public class QuestionList {
@@ -18,10 +18,20 @@ public class QuestionList {
         "Who is your favorite celebrity?"
     };
 
+    /********
+     * Setter for String[] array.
+     * @param String[] array
+     * 
+     */
     public void setArray(String[] array) {
         this.array = array;
     }
 
+    /********
+     * Getter for String[] array.
+     * 
+     * @return String[] userId
+     */
     public String[] getArray() {
         return array;
     }

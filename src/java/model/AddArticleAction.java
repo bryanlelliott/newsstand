@@ -12,7 +12,7 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 
 /**
  *
- * @author katie
+ * AddArticleAction is the action class for article.jsp.
  */
 public class AddArticleAction extends ActionSupport {
     
@@ -26,62 +26,133 @@ public class AddArticleAction extends ActionSupport {
     
     private Date addDate;
 
+    /********
+     * Getter for int articleId.
+     * 
+     * @return int articleId
+     */
     public int getArticleId() {
         return articleId;             
     }
-
+    /********
+     * Setter for int articleId.
+     * @param int articleId
+     * 
+     */
     public void setArticleId(int articleId) {
         this.articleId = articleId;
     } 
-
+    /********
+     * Getter for String url.
+     * 
+     * @return String articleId
+     */
     public String getUrl() {
         return url;
     }
     
+    /********
+     * Setter for String url.
+     * @param String url
+     * 
+     */
     public void setUrl(String url) {
         this.url = url;
     }
 
+    /********
+     * Getter for String title.
+     * 
+     * @return String title
+     */
     public String getTitle() {
         return title;
     }
 
+    /********
+     * Setter for String title.
+     * @param String title
+     * 
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /********
+     * Getter for String category.
+     * 
+     * @return String category
+     */
     public String getCategory() {
         return category;
     }
 
+    /********
+     * Setter for String category.
+     * @param String category
+     * 
+     */
     public void setCategory(String category) {
         this.category = category;
     }
-
+    /********
+     * Getter for String authorName.
+     * 
+     * @return String authorName
+     */
     public String getAuthorName() {
         return authorName;
     }
 
+    /********
+     * Setter for String authorName.
+     * @param String authorName
+     * 
+     */
     public void setAuthorName(String authorName) {
         this.authorName = authorName;
     }
 
+    /********
+     * Getter for String addDate.
+     * 
+     * @return String addDate
+     */
     public Date getAddDate() {
         return addDate;
     }
 
+    /********
+     * Setter for String title.
+     * @param String title
+     * 
+     */
     public void setAddDate(Date addDate) {
         this.addDate = addDate;
     }
     
+    /********
+     * Getter for String providerName.
+     * 
+     * @return String providerName
+     */
     public String getProviderName() {
         return providerName;
     }
     
-    public void setProviderName(String providerName) {
+
+    /********
+     * Setter for String providerName.
+     * @param String providerName
+     * 
+     */
+    public void setProviderName() {
         this.providerName = providerName;
     }
     
+    /********
+     * Validate() checks each private attribute for correctness.
+     ********/
     public void validate(){
         System.out.println("test: addArticle validate");                // debug
         ActionHelper helper = new ActionHelper();
@@ -122,6 +193,12 @@ public class AddArticleAction extends ActionSupport {
         System.out.println("test: addArticle end validate");            // debug
     }
     
+
+    /*
+     * execute() method goes to dbupdate.java to either return success or input.
+     * @return String SUCCESS
+     * @return String INPUT
+     */
     public String execute() throws SQLException{
         System.out.println("test: addArticle execute()");               // debug
         DBUpdate dbu = new DBUpdate();

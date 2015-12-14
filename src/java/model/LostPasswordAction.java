@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
- *
+ * LostPasswordAction is action class for lostpassword.jsp.
  * @author katie
  */
 public class LostPasswordAction extends ActionSupport {
@@ -17,6 +17,9 @@ public class LostPasswordAction extends ActionSupport {
     private String secretAnswer;
     private String password;
 
+   /********
+     * Validate() checks each private attribute for correctness.
+     ********/ 
     public void validate() {
         
         ActionHelper helper = new ActionHelper();
@@ -36,6 +39,11 @@ public class LostPasswordAction extends ActionSupport {
         secretAnswer = helper.injectionReplace(secretAnswer);
         }
 
+    /*
+     * execute() method goes to dbupdate.java to either return success or input.
+     * @return String SUCCESS
+     * @return String INPUT
+     */
     public String execute() {
            
             DBQueryHandler handler = new DBQueryHandler();

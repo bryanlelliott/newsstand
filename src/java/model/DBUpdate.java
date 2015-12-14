@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 /**
- *
+ * DBUpdate is the class for updating the database.
  * @author bryanlelliott
  * 
  */
@@ -19,6 +19,18 @@ public class DBUpdate {
     private DBCommandHandler dbComHand = new DBCommandHandler();
     private DBQueryHandler dbqh = new DBQueryHandler();
     
+    /********
+     * insertUser() method inserts a new user into the database.
+     * @param String userId
+     * @param String password
+     * @param String email
+     * @param String realName
+     * @param String bio
+     * @param int secretQuestion
+     * @param String secretAnswer
+     * @param String userType
+     * @return boolean
+     */
     public boolean insertUser(String userId, String password, 
         String email,String realName, String bio, int secretQuestion,
             String secretAnswer, String userType) {
@@ -40,6 +52,17 @@ public class DBUpdate {
         
     }
 
+    /********
+     * insertArticle method inserts a new article into the database.
+     * @param String articleId
+     * @param String url
+     * @param String authorName
+     * @param String providerName
+     * @param String title
+     * @param Date addDate
+     * @param String category
+     * @return boolean
+     */
     public boolean insertArticle(int articleId, String url, 
          String authorName, String providerName, String title, Date addDate, String category) throws SQLException {
         
@@ -100,6 +123,17 @@ public class DBUpdate {
         }              
     }
 
+    /********
+     * insertArticle method inserts a new article into the database.
+     * @param String articleId
+     * @param String url
+     * @param String authorName
+     * @param String providerName
+     * @param String title
+     * @param Date addDate
+     * @param String category
+     * @return boolean
+     */
     public boolean insertRating(int ratingId, String userId,
         int articleId, int ratingValue, String ratingText, Date ratingDate) {
         String command = "INSERT INTO ratings VALUES ("
@@ -117,6 +151,12 @@ public class DBUpdate {
         }              
     }
 
+    /********
+     * insertProvider method inserts a new provider into the database.
+     * @param String providerId
+     * @param String providerName
+     * @return boolean
+     */
     public boolean insertProvider(int providerId, String providerName){
         String command = "INSERT INTO providers VALUES ("
             + providerId + ", \'" + providerName + "\', \'www.francisputthisintemporarily.com\');";
@@ -131,6 +171,12 @@ public class DBUpdate {
         }      
     }
     
+        /********
+     * insertAuthor method inserts a new author into the database.
+     * @param String authorId
+     * @param String authorName
+     * @return boolean
+     */
     public boolean insertAuthor(int authorId, String authorName){
         String command = "INSERT INTO authors VALUES ("
             + authorId + ", \'" + authorName + "\');";
@@ -145,6 +191,11 @@ public class DBUpdate {
         }      
     }
 
+    /********
+     * insertArticle method deletes an account from the database.
+     * @param String userId
+     * @return boolean
+     */
     public boolean deleteAccount(String userId){
         String command = "DELETE FROM users WHERE userID = \'" + userId + "\';";
 
@@ -158,6 +209,12 @@ public class DBUpdate {
         }      
     }
  
+    /********
+     * deleteContent method deletes content from the database.
+     * @param String articleId
+     * @param String category
+     * @return boolean
+     */
     public boolean deleteContent(int articleId) {
         String command = "DELETE FROM articles WHERE articleID = " + articleId + ";";
 
@@ -171,6 +228,12 @@ public class DBUpdate {
         }     
     }
  
+    /********
+     * updateUser method updates user in the database.
+     * @param String userId
+     * @param String password
+     * @return boolean
+     */
     public boolean updateUser(String userId, String password, 
         String email,String realName, String bio){
         
@@ -189,6 +252,16 @@ public class DBUpdate {
         }  
     }
 
+    /********
+     * updateUser method updates user in the database.
+     * @param String userId
+     * @param String password
+     * @param String oldPassword
+     * @param String email
+     * @param String realName
+     * @param String bio
+     * @return boolean
+     */
     public boolean updateUser(String userId, String password, String oldPassword,
         String email,String realName, String bio){
         
@@ -209,6 +282,12 @@ public class DBUpdate {
         }  
     }
 
+     /********
+     * updateCategory method updates a category in the database.
+     * @param String articleId
+     * @param String category
+     * @return boolean
+     */
     public boolean updateCategory(int articleId, String category){
         
         int articleCategoryId = 0;
@@ -228,6 +307,12 @@ public class DBUpdate {
         }      
     }
     
+        /********
+     * generateID method generates a random number for an ID.
+     * @param String column
+
+     * @return boolean
+     */
     public int generateID(String column) throws SQLException{
         boolean found = false;        
         int idNum = 0;
@@ -278,7 +363,11 @@ public class DBUpdate {
                   
         return idNum;
     }
-    
+        /********
+     * authorExists method checks if the author exists in the database.
+     * @param String authorName
+     * @return boolean
+     */
     public boolean authorExists(String authorName){
         
         try {
@@ -298,6 +387,12 @@ public class DBUpdate {
             return false;
         }
     }
+    
+    /********
+     * providerExists method checks if the provider exists in the database.
+     * @param String providerName
+     * @return boolean
+     */
     public boolean providerExists(String providerName){
         
         try {
