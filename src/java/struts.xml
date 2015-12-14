@@ -6,7 +6,7 @@
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
         <action name="signup" class="model.SignUpAction">
-            <result name="success">test.jsp</result>
+            <result name="success">login.jsp</result>
             <result name="input">signup.jsp</result>
             <result name="error">article.jsp</result>
         </action>
@@ -18,6 +18,10 @@
         <action name="lostpassword" class="model.LostPasswordAction">
             <result name="success">login.jsp</result>
             <result name="input">lostpassword.jsp</result>
+        </action>
+        <action name="addarticle" class="model.AddArticleAction">
+            <result name="success">test.jsp</result>
+            <result name="input">index.jsp</result>
         </action>
     </package>
 </struts>
