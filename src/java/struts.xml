@@ -21,7 +21,11 @@
         </action>
         <action name="addarticle" class="model.AddArticleAction">
             <result name="success">test.jsp</result>
-            <result name="input">index.jsp</result>
+            <result name="input">browse.jsp</result>
+        </action>
+        <action name="ratearticle" class="model.RateArticleAction">
+            <result name="success">browse.jsp</result>
+            <result name="input">login.jsp</result>
         </action>
     </package>
 </struts>
