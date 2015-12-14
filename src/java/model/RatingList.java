@@ -6,16 +6,16 @@
 package model;
 
 /**
- * QuestionList is the list of questions used.
+ * RatingList is the list of ratings used.
  * @author francis
  */
-public class QuestionList {
+public class RatingList {
     String[] array = {
-        "What is the name of your childhood best friend?", 
-        "What city were you born in?", 
-        "What is the name of your first pet?",
-        "What is your favorite color?",
-        "Who is your favorite celebrity?"
+        "1", 
+        "2", 
+        "3",
+        "4",
+        "5"
     };
 
     /********

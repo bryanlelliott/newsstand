@@ -108,13 +108,12 @@
                         <!-- Modal Body -->
                         <div class="modal-body">
                             <s:bean name="model.GenreList">
-                            <s:form id="article-form" action="addArticle" method="post" role="form" style="display: block;">
-                                <div class="form-group"><label for="addArticleUrl">URL</label><s:textfield name="addArticleUrl" placeholder="Username" cssClass="form-control"/></div>
-                                <div class="form-group"><label for="addArticleTitle">Title</label><s:textfield name="addArticleTitle" placeholder="Password" cssClass="form-control"/></div>
-                                <div class="form-group"><label for="addArticleAuthor">Author</label><s:textfield name="addArticleAuthor" placeholder="Author, ex. John Smith" cssClass="form-control"/></div>
-                                <div class="form-group"><label for="addArticleProvider">Provider</label><s:textfield name="addArticleProvider" placeholder="Provider, ex. CNN" cssClass="form-control"/></div>
-                                <div class="form-group"><label for="addArticleDate">Publication Date</label><s:textfield name="addArticleDate" placeholder="MM/DD/YYYY" cssClass="form-control"/></div>
-                                <div class="form-group"><label for="addArticleGenre">Article Genre</label><s:select name="addGenre" list="array" cssClass="form-control"/></div>
+                            <s:form id="article-form" action="addarticle" method="post" role="form" style="display: block;">
+                                <div class="form-group"><label for="url">URL</label><s:textfield name="url" placeholder="Article URL" cssClass="form-control"/></div>
+                                <div class="form-group"><label for="title">Title</label><s:textfield name="title" placeholder="Article Title" cssClass="form-control"/></div>
+                                <div class="form-group"><label for="authorName">Author</label><s:textfield name="authorName" placeholder="Author, ex. John Smith" cssClass="form-control"/></div>
+                                <div class="form-group"><label for="providerName">Provider</label><s:textfield name="providerName" placeholder="Provider, ex. CNN" cssClass="form-control"/></div>
+                                <div class="form-group"><label for="category">Article Genre</label><s:select name="category" list="array" cssClass="form-control"/></div>
                                 <div class="text-center"><s:submit cssClass="btn btn-success" value="Submit" /></div>
                             </s:form>
                             </s:bean>

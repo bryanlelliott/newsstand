@@ -156,7 +156,7 @@ hr {
 <!-- INSERT HTML PAGE CONTENT HERE -->
 <div id="main-body" style="background-color:black">
   <div class="row" style="margin:0;background-color:black">
-    <div class="col-md-10" style="padding: 0 15px 0 15px;background-color:white">
+    <div class="col-md-12" style="padding: 0 15px 0 15px;background-color:white">
       <div class="text-left">
         <div class="pull-right" style="margin-top:18px">
           <span style="color:gray"><i class="fa fa-star"></i> 3.4 | 
@@ -177,9 +177,18 @@ hr {
         <div class="text-center" style="color:black">
           <a href="http://money.cnn.com/2015/11/19/technology/facebook-broken-heart/"><span style="border: solid black 1px; padding:4px">Read Article</span></a>
         </div>
-        <br>
+          <br>
+      </div>
+      <div class="row">
         <div class="row" style="padding:2em 0;background-color:gray;color:white">
-        <div class="col-md-6 text-center" style="padding: 1em 0">
+            <s:bean name="model.RatingList">
+            <s:form id="rating-form" action="ratearticle" method="post" role="form">
+                <div class="form-group col-md-2"><s:select name="category" list="array" cssClass="form-control"/></div>
+                <div class="form-group col-md-8"><s:textfield name="comment" placeholder="Your comment" cssClass="form-control"/></div>
+                <div class="text-center"><s:submit cssClass="btn btn-success" value="Submit" /></div>
+            </s:form>
+            </s:bean>
+        <!--<div class="col-md-6 text-center" style="padding: 1em 0">
             <h4>RATE THIS ARTICLE</h4>
 
                 <div id="stars" class="starrr"></div>
@@ -192,7 +201,7 @@ hr {
               </span>
             </div>
           </div>
-        </div>
+        </div>-->
       </div>
           <div class="row" style="background-color:black; color:white">
             <div class="col-md-4 col-md-offset-1" style="border: solid 1px black;overflow:hidden;padding: 1em 0">
@@ -239,23 +248,6 @@ hr {
           <a href="http://money.cnn.com/2015/11/19/technology/facebook-broken-heart/index.html"><span style="color:gray">read article</span></a>
           </div>-->
     </div>
-    <div class="col-md-2" style="padding:0;background-color:black">
-      <div class="list-group"; style="margin:0">
-        <button type="button" class="list-group-item disabled" style="width:100%">MORE STORIES</button>
-        <button type="button" class="list-group-item text-center" style="width:100%">Police worry protests may turn violent</button>
-        <button type="button" class="list-group-item text-center" style="width:100%">Interim police chief in Ferguson resigning effective December 2</button>
-        <button type="button" class="list-group-item text-center" style="width:100%">Little boy donates his piggy bank to vandalized mosque</button>
-        <button type="button" class="list-group-item text-center" style="width:100%">NIH promises to retire all research chimps</button>
-        <button type="button" class="list-group-item text-center" style="width:100%">Melbourne city workers save turtle stuck in plastic bag</button>
-        <button type="button" class="list-group-item text-center" style="width:100%">Melbourne city workers save turtle stuck in plastic bag</button>
-        <button type="button" class="list-group-item text-center" style="width:100%">Melbourne city workers save turtle stuck in plastic bag</button>
-        <button type="button" class="list-group-item text-center" style="width:100%">Melbourne city workers save turtle stuck in plastic bag</button>
-        <button type="button" class="list-group-item text-center" style="width:100%">Melbourne city workers save turtle stuck in plastic bag</button>
-        <button type="button" class="list-group-item text-center" style="width:100%">Melbourne city workers save turtle stuck in plastic bag</button>
-        <button type="button" class="list-group-item text-center" style="width:100%">Melbourne city workers save turtle stuck in plastic bag</button>
-      </div>
-    </div>
-
   </div>
 </div>
 <!-- End Main Body -->

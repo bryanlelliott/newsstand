@@ -16,9 +16,19 @@ public class ViewArticleAction {
         private String userID;
         int articleId;
         String category;
+        
+        
+    /********
+     * Validate() checks each private attribute for correctness.
+     ********/ 
         public void validate() {
             
         }
+    /*
+     * execute() method goes to dbupdate.java to either return success or input.
+     * @return String SUCCESS
+     * @return String INPUT
+     */
         public String execute() {
             return SUCCESS;
         }

@@ -6,7 +6,7 @@
 package model;
 
 /**
- *
+ * GenreList is the list of genres used.
  * @author francis
  */
 public class GenreList {
@@ -24,10 +24,20 @@ public class GenreList {
         "Other"
     };
     
+        /********
+     * Setter for String[] array.
+     * @param String[] array
+     * 
+     */
     public void setArray(String[] array) {
         this.array = array;
     }
 
+   /********
+     * Getter for String[] array.
+     * 
+     * @return String[] userId
+     */
     public String[] getArray() {
         return array;
     }

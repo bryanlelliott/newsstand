@@ -11,42 +11,26 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
- *
+ * SignUpAction is the action class for signup.jsp
  * @author katie
  */
 public class SignUpAction extends ActionSupport {
     private String userId;    
     private String password; 
     private String confirmPassword;
-    //private boolean submitted;    
-    //private boolean loggedIn;
     private String realName;
     private String bio = "This user has not created a bio yet.";
     private String email;
-    // private String userType = "Regular";
 
     private String secretQuestion;
     private int questionNum;
     private String secretAnswer;
     
     DBQueryHandler handler = new DBQueryHandler();
-    
-    // database name?
 
-    /*
-    NOTES FROM CH 10: SECURITY-ENCRYPTION
-    // login handling
-    If (...login is successful...) {  
-        session.setAttribute("loggedIn", new Boolean (true));}
-    // logout handling
-    session.setAttribute("loggedIn", new Boolean (false));
-
-    <%@ page %>
-    <% Boolean loggedIn =   session.getAttribute("loggedIn"); 
-        if (loggedIn == null || !loggedIn.booleanValue()) {   
-               response.sendRedirect("/login.jsp"); }
-    %> */  
-    
+    /********
+     * Validate() checks each private attribute for correctness.
+     ********/     
     public void validate() {
         ActionHelper helper = new ActionHelper();
         
@@ -124,6 +108,11 @@ public class SignUpAction extends ActionSupport {
         }
     } 
     
+    /*
+     * execute() method goes to dbupdate.java to either return success or input.
+     * @return String SUCCESS
+     * @return String INPUT
+     */
     public String execute() throws SQLException {
         DBUpdate updater = new DBUpdate();
         DBQueryHandler dbqh = new DBQueryHandler();
@@ -158,68 +147,148 @@ public class SignUpAction extends ActionSupport {
         }
     }
     
+    /********
+     * Getter for String userId.
+     * 
+     * @return String userId
+     */
     public String getUserId() {
         return userId;
     }
 
+       /********
+     * Setter for String userId.
+     * @param String userid
+     * 
+     */
     public void setUserId(String userId) {
         this.userId = userId;
     }
 
+    /********
+     * Getter for String password.
+     * 
+     * @return String password
+     */
     public String getPassword() {
         return password;
     }
-
+    
+       /********
+     * Setter for String password.
+     * @param String password
+     * 
+     */
     public void setPassword(String password) {
         this.password = password;
     }
     
+    /********
+     * Getter for String confirmPassword.
+     * 
+     * @return String confirmPassword
+     */
     public String getConfirmPassword() {
         return confirmPassword;
     }
     
+       /********
+     * Setter for String confirmPassword.
+     * @param String confirmPassword
+     * 
+     */
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
     
+    /********
+     * Getter for String realName.
+     * 
+     * @return String realName
+     */
     public String getRealName() {
         return realName;
     }
     
+       /********
+     * Setter for String realName.
+     * @param String realName
+     * 
+     */
     public void setRealName(String realName)
     {
         this.realName = realName;
     }
     
+        /********
+     * Getter for String bio.
+     * 
+     * @return String bio
+     */
     public String getBio() {
         return bio;
     }
     
+       /********
+     * Setter for String bio.
+     * @param String bio
+     * 
+     */
     public void setBio(String bio) {
         this.bio = bio;
     }
     
+        /********
+     * Getter for String email.
+     * 
+     * @return String email
+     */
     public String getEmail() {
         return email;
     }
     
+       /********
+     * Setter for String email.
+     * @param String email
+     * 
+     */
     public void setEmail(String email) {
         this.email = email;
     }
     
 
+        /********
+     * Getter for String secretQuestion.
+     * 
+     * @return String secretQuestion
+     */
     public String getSecretQuestion() {
         return secretQuestion;
     }
     
+       /********
+     * Setter for String secretQuestion.
+     * @param String secretQuestion
+     * 
+     */
     public void setSecretQuestion(String secretQuestion) {
         this.secretQuestion = secretQuestion;
     }
     
+        /********
+     * Getter for String secretAnswer.
+     * 
+     * @return String secretAnswer
+     */
     public String getSecretAnswer() {
         return secretAnswer;
     }
     
+       /********
+     * Setter for String secretAnswer.
+     * @param String secretAnswer
+     * 
+     */
     public void setSecretAnswer(String secretAnswer) {
         this.secretAnswer = secretAnswer;
     }

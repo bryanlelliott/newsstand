@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
+ * EditProfileAction is action class for editprofile.jsp.
  * @author katie
  */
 public class EditProfileAction extends ActionSupport{
@@ -22,62 +22,134 @@ public class EditProfileAction extends ActionSupport{
     private String confirmPassword;
     private String userId;
 
+        /********
+     * Getter for String editName.
+     * 
+     * @return String editName
+     */
     public String getEditName() {
         return editName;
     }
 
+        /********
+     * Getter for String userId.
+     * 
+     * @return String userId
+     */
     public String getUserId() {
         return userId;
     }
 
+        /********
+     * Setter for String userId.
+     * @param String userId
+     * 
+     */
     public void setUserId(String userId) {
         this.userId = userId;
     }
 
+        /********
+     * Setter for String editName.
+     * @param String editName
+     * 
+     */
     public void setEditName(String editName) {
         this.editName = editName;
     }
 
+        /********
+     * Getter for String editEmail.
+     * 
+     * @return String editEmail
+     */
     public String getEditEmail() {
         return editEmail;
     }
 
+        /********
+     * Setter for String editEmail.
+     * @param String editEmail
+     * 
+     */
     public void setEditEmail(String editEmail) {
         this.editEmail = editEmail;
     }
 
+        /********
+     * Getter for String editBio.
+     * 
+     * @return String editBio
+     */
     public String getEditBio() {
         return editBio;
     }
 
+        /********
+     * Setter for String editBio.
+     * @param String editBio
+     * 
+     */
     public void setEditBio(String editBio) {
         this.editBio = editBio;
     }
 
+        /********
+     * Getter for String oldPassword.
+     * 
+     * @return String oldPassword
+     */
     public String getOldPassword() {
         return oldPassword;
     }
 
+        /********
+     * Setter for String oldPassword.
+     * @param String oldPassword
+     * 
+     */
     public void setOldPassword(String oldPassword) {
         this.oldPassword = oldPassword;
     }
 
+        /********
+     * Getter for String editPassword.
+     * 
+     * @return String editPassword
+     */
     public String getEditPassword() {
         return editPassword;
     }
 
+        /********
+     * Setter for String editPassword.
+     * @param String userId
+     * 
+     */
     public void setEditPassword(String editPassword) {
         this.editPassword = editPassword;
     }
 
+        /********
+     * Getter for String confirmPassword.
+     * 
+     * @return String confirmPassword
+     */
     public String getConfirmPassword() {
         return confirmPassword;
     }
 
+        /********
+     * Setter for String confirmPassword.
+     * @param String confirmPassword
+     * 
+     */
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
-   
+        /********
+     * Validate() checks each private attribute for correctness.
+     ********/   
     public void validate()
     {
         ActionHelper helper = new ActionHelper();
@@ -150,6 +222,11 @@ public class EditProfileAction extends ActionSupport{
         }
     }
     
+        /*
+     * execute() method goes to dbupdate.java to either return success or input.
+     * @return String SUCCESS
+     * @return String INPUT
+     */
     public String execute()
     {
         DBUpdate updater = new DBUpdate();
