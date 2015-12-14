@@ -9,13 +9,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
+ * This class handles DB queries.
  * @author elliotbl
  */
 public class DBQueryProcessor {
     
     DBQueryHandler dbqh = new DBQueryHandler();
 
+    /********
+     * Getter for String authorName.
+     * @param String authorName
+     * @return query for authorName
+     */
     public ResultSet getAuthor(String authorName){
         String query = "SELECT * FROM authors WHERE authorName =\'" + authorName + "\';";
         
@@ -28,6 +33,11 @@ public class DBQueryProcessor {
         
     }
     
+    /********
+     * Getter for String users.
+     * 
+     * @return query for users
+     */
     public ResultSet getUsers() {
         
         String query = "SELECT * FROM users;";
@@ -40,6 +50,11 @@ public class DBQueryProcessor {
         }
     }
     
+    /********
+     * Getter for content.
+     * 
+     * @return query for content
+     */
     public ResultSet getContent(String userId){
         
         String query = "SELECT a.articleURL, a.articleURL, a.authorID, "
@@ -57,6 +72,11 @@ public class DBQueryProcessor {
 
     }
     
+    /********
+     * Getter for relevant articles.
+     * 
+     * @return query for articles
+     */
     public ResultSet getRelevantArticles(){
         
         String query = "";
@@ -83,6 +103,11 @@ public class DBQueryProcessor {
 
     }
     
+    /********
+     * Getter for user.
+     * 
+     * @return query for user
+     */
     public ResultSet getUser(String userId, String password){
         
         String query = "SELECT * FROM users WHERE userID = \'" + userId 
@@ -97,7 +122,9 @@ public class DBQueryProcessor {
 
     }
     
-    // Francis added this
+    /********
+     * Ends/ closes the query.
+     */
     public void endQuery() throws SQLException {
         
         dbqh.close();

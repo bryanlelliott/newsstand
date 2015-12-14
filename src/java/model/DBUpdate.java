@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 /**
- *
+ * DBUpdate is the class for updating the database.
  * @author bryanlelliott
  */
 public class DBUpdate {
@@ -18,6 +18,18 @@ public class DBUpdate {
     private DBCommandHandler dbComHand = new DBCommandHandler();
     private DBQueryHandler dbqh = new DBQueryHandler();
     
+    /********
+     * insertUser() method inserts a new user into the database.
+     * @param String userId
+     * @param String password
+     * @param String email
+     * @param String realName
+     * @param String bio
+     * @param int secretQuestion
+     * @param String secretAnswer
+     * @param String userType
+     * @return boolean
+     */
     public boolean insertUser(String userId, String password, 
         String email,String realName, String bio, int secretQuestion,
             String secretAnswer, String userType) {
@@ -39,6 +51,17 @@ public class DBUpdate {
         
     }
 
+    /********
+     * insertArticle method inserts a new article into the database.
+     * @param String articleId
+     * @param String url
+     * @param String authorName
+     * @param String providerName
+     * @param String title
+     * @param Date addDate
+     * @param String category
+     * @return boolean
+     */
     public boolean insertArticle(int articleId, String url, 
          String authorName, String providerName, String title, Date addDate, String category) {
         
@@ -75,6 +98,17 @@ public class DBUpdate {
         }              
     }
 
+    /********
+     * insertArticle method inserts a new article into the database.
+     * @param String articleId
+     * @param String url
+     * @param String authorName
+     * @param String providerName
+     * @param String title
+     * @param Date addDate
+     * @param String category
+     * @return boolean
+     */
     public boolean insertRating(int ratingId, String userId,
         int articleId, int ratingValue, String ratingText, Date ratingDate) {
         String command = "INSERT INTO ratings VALUES ("

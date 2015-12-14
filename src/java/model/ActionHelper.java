@@ -11,14 +11,14 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  *
- * @author Trev
+ * ActionHelper class is a helper for all the action classes.
  */
 public class ActionHelper {
     
     /**
-     *
-     * @param input
-     * @return
+     * injectionReplace() prevents malicious activity.
+     * @param String input
+     * @return String safeString
      */
     public String injectionReplace(String input)
     {
@@ -35,9 +35,9 @@ public class ActionHelper {
     }
     
     /**
-     *
-     * @param password
-     * @return
+     * hashPassword() takes in a password and hashes it.
+     * @param String password
+     * @return String digest
      */
     public String hashPassword(String password){
         String digest;
