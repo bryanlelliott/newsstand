@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<s:set name="theme" value="'css_xhtml'" scope="page" />
+<s:set name="theme" value="'simple'" scope="page" />
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -69,23 +69,23 @@
 						<div class="row">
 							<div class="col-lg-12">
 								<s:form id="login-form" action="signin" method="post" role="form" style="display: block;">
-                                                                        <s:textfield name="userId" placeholder="Username" class="form-group"/>
-                                                                        <s:password name="password" placeholder="Password"/>
-                                                                        <s:submit value="submit" />
+                                                                    <div class="form-group"><s:textfield name="userId" placeholder="Username" cssClass="form-control"/></div>
+                                                                    <div class="form-group"><s:password name="password" placeholder="Password" cssClass="form-control"/></div>
+                                                                    <div class="text-center"><s:submit value="Login" cssClass="btn btn-primary"/></div>
 								</s:form>
 								<s:bean name="model.QuestionList">
 								<s:form id="register-form" action="signup" method="post" role="form" style="display: none;">
-                                                                        <s:textfield name="realName" placeholder="Your name" class="form-group" validate="true"/>
-                                                                        <s:textfield name="email" placeholder="Your email" class="form-group"/>
-                                                                        <s:textfield name="userId" placeholder="Username" validate="true"/>
-                                                                        <s:password name="password" placeholder="Password" validate="true"/>
-                                                                        <s:password name="confirmPassword" placeholder="Re-enter password"/>
-                                                                        <s:textarea name="bio" placeholder="A sentence about yourself"/>
+                                                                    <div class="form-group"><s:textfield name="realName" placeholder="Your name" cssClass="form-control" validate="true"/></div>
+                                                                    <div class="form-group"><s:textfield name="email" placeholder="Your email" cssClass="form-control"/></div>
+                                                                    <div class="form-group"><s:textfield name="userId" placeholder="Username" cssClass="form-control"/></div>
+                                                                    <div class="form-group"><s:password name="password" placeholder="Password" cssClass="form-control"/></div>
+                                                                    <div class="form-group"><s:password name="confirmPassword" placeholder="Re-enter password" cssClass="form-control"/></div>
+                                                                    <div class="form-group"><s:textarea name="bio" placeholder="A sentence about yourself" cssClass="form-control"/></div>
                                                                         <hr>
                                                                         <h5 style="text-align:center">Password Recovery Question</h5>
-                                                                        <s:select name="secretQuestion" list="array" />
-                                                                        <s:textfield name="secretAnswer" placeholder="Your answer" />
-                                                                        <s:submit value="submit" />
+                                                                        <div class="form-group"><s:select name="secretQuestion" list="array" cssClass="form-control"/></div>
+                                                                        <div class="form-group"><s:textfield name="secretAnswer" placeholder="Your answer" cssClass="form-control"/></div>
+                                                                        <div class="text-center"><s:submit value="Register" cssClass="btn btn-success"/></div>
 								</s:form>
                                                                 </s:bean>
 							</div>
