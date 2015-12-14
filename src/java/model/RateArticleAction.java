@@ -113,7 +113,7 @@ public class RateArticleAction extends ActionSupport {
 
     }
     
-    public String execute() {
+    public String execute() throws SQLException {
         DBUpdate dbu = new DBUpdate();
         ratingID = dbu.generateID("RAT");
         dbu.insertRating(ratingID, userID, articleID, rating, ratingText, ratingDate);

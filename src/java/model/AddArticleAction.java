@@ -16,7 +16,7 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
  */
 public class AddArticleAction extends ActionSupport {
     
-    private int articleId;
+    private int articleId;       
     
     private String url;
     private String title;
@@ -27,7 +27,7 @@ public class AddArticleAction extends ActionSupport {
     private Date addDate;
 
     public int getArticleId() {
-        return articleId;
+        return articleId;             
     }
 
     public void setArticleId(int articleId) {
@@ -78,22 +78,22 @@ public class AddArticleAction extends ActionSupport {
         return providerName;
     }
     
-    public void setProviderName() {
+    public void setProviderName(String providerName) {
         this.providerName = providerName;
     }
     
-    
     public void validate(){
+        System.out.println("test: addArticle validate");                // debug
         ActionHelper helper = new ActionHelper();
         
         if( url.length() == 0 || url == null )
         {
             addFieldError("url", "This field cannot be left blank.");
         }
-        else if( !url.startsWith("http") || !url.startsWith("www") )
+        /*else if( !url.startsWith("http") || !url.startsWith("www") )
         {
             addFieldError("url", "Please copy and paste a real URL.");
-        }
+        }*/
         else if( title.length() == 0 || title == null )
         {
             addFieldError("title", "This field cannot be blank.");
@@ -112,11 +112,27 @@ public class AddArticleAction extends ActionSupport {
         addDate = new Date();
         authorName = helper.injectionReplace(authorName);
         providerName = helper.injectionReplace(providerName);
+        System.out.println("test: "+ articleId);
+        System.out.println("test: "+ url);
+        System.out.println("test: "+ authorName);
+        System.out.println("test: "+ providerName);
+        System.out.println("test: "+ title);
+        System.out.println("test: "+ addDate.toString());
+        System.out.println("test: "+ category);
+        System.out.println("test: addArticle end validate");            // debug
     }
     
-    public String execute(){
+    public String execute() throws SQLException{
+        System.out.println("test: addArticle execute()");               // debug
         DBUpdate dbu = new DBUpdate();
         articleId = dbu.generateID("ART");
+        System.out.println("test: "+ articleId);
+        System.out.println("test: "+ url);
+        System.out.println("test: "+ authorName);
+        System.out.println("test: "+ providerName);
+        System.out.println("test: "+ title);
+        System.out.println("test: "+ addDate.toString());
+        System.out.println("test: "+ category);
         if( dbu.insertArticle(articleId, url, authorName, providerName, title, addDate, category) )
         {
             return SUCCESS;
